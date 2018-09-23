@@ -15,11 +15,21 @@ import junit.test.MySQLConnectionTest;
 public class MySQLConnectionUtils {
 
 	// 用于连接数据库的工具类
-	public static ResultSet mySQLResult(String sql) throws IOException {
+	public static ResultSet mySQLResult(String sql) {
 		String path = MySQLConnectionTest.class.getClassLoader().getResource("db.properties").getPath();
-		FileInputStream in = new FileInputStream(path);
+		FileInputStream in = null;
 		Properties properties = new Properties();
-		properties.load(in);
+		
+		try {
+			in = new FileInputStream(path);
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			properties.load(in);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 
 		String user = properties.getProperty("jdbc.user");
 		String password = properties.getProperty("jdbc.password");
@@ -42,12 +52,22 @@ public class MySQLConnectionUtils {
 		return rs;
 	}
 
-	public static Connection mySQLConnection() throws IOException {
+	public static Connection mySQLConnection() {
 
 		String path = MySQLConnectionTest.class.getClassLoader().getResource("db.properties").getPath();
-		FileInputStream in = new FileInputStream(path);
+		FileInputStream in = null;
 		Properties properties = new Properties();
-		properties.load(in);
+		
+		try {
+			in = new FileInputStream(path);
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			properties.load(in);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 
 		String user = properties.getProperty("jdbc.user");
 		String password = properties.getProperty("jdbc.password");
@@ -66,7 +86,7 @@ public class MySQLConnectionUtils {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return connection;
 	}
 }

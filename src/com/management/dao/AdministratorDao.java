@@ -10,12 +10,14 @@ public interface AdministratorDao {
 
 	public boolean existAdministrator(Administrator admin) throws SQLException, IOException;
 	
-	public boolean loginAdministrator(String userName,String password);
+	public boolean loginAdministrator(String userName,String password) throws IOException, SQLException;
 	
-	public void registerAdministrator(Administrator admin);
+	public void registerAdministrator(Administrator admin) throws IOException, SQLException;
 	
-	public ResultSet queryAllAdministrator();
+	public ResultSet queryAllAdministrator() throws IOException;
 	
-	public boolean alertAdministrator(Administrator admin);
+	public void alertAdministrator(Administrator admin) throws IOException, SQLException;
+	
+	public void deleteAdministrator(Administrator admin) throws SQLException;
 	
 }
