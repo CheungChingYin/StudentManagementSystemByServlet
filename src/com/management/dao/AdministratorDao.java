@@ -1,23 +1,22 @@
 package com.management.dao;
 
-import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.management.entities.Administrator;
 
 public interface AdministratorDao {
 
-	public boolean existAdministrator(Administrator admin) throws SQLException, IOException;
+	public boolean existAdministrator(Administrator admin) throws SQLException;
 	
-	public boolean loginAdministrator(String userName,String password) throws IOException, SQLException;
+	public boolean loginAdministrator(String userName,String password) throws SQLException;
 	
-	public void registerAdministrator(Administrator admin) throws IOException, SQLException;
+	public void addAdministrator(Administrator admin) throws SQLException;
 	
-	public ResultSet queryAllAdministrator() throws IOException;
+	public List<Administrator> queryAllAdministrator() throws SQLException;
 	
-	public void alertAdministrator(Administrator admin) throws IOException, SQLException;
+	public void alertAdministrator(Administrator admin) throws SQLException;
 	
-	public void deleteAdministrator(Administrator admin) throws SQLException;
+	public void deleteAdministrator(Integer id) throws SQLException;
 	
 }

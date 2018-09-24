@@ -1,4 +1,4 @@
-package junit.test;
+package junit.test.utils;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

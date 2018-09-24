@@ -2,6 +2,7 @@ package junit.test.dao.impl;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -10,10 +11,25 @@ import com.management.dao.AdministratorDao;
 import com.management.dao.impl.AdministratorDaoImpl;
 import com.management.entities.Administrator;
 
-public class testAdministratorDaoImpl {
+public class TestAdministratorDaoImpl {
 	
-	@Ignore
-	public void testExistAdministrator() throws SQLException, IOException{
+	@Test
+	public void testQueryAllAdministrator(){
+		AdministratorDaoImpl dao = new AdministratorDaoImpl();
+		try {
+			List<Administrator> list = dao.queryAllAdministrator();
+			for(Administrator admin : list){
+				System.out.println(admin.getId()+" : "+admin.getUser()+" : "+admin.getPassword()+" : "+admin.getPermission());
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Test
+	public void testExistAdministrator() throws SQLException{
 		Administrator admin = new Administrator();
 		admin.setId(1);
 		admin.setUser("abc");
@@ -24,32 +40,32 @@ public class testAdministratorDaoImpl {
 		System.out.println(result);
 	}
 	
-	@Ignore
-	public void testloginAdministrator() throws IOException, SQLException{
+	@Test
+	public void testloginAdministrator() throws SQLException{
 		String userName = "admin";
-		String password = "123456";
+		String password = "admin1";
 		AdministratorDaoImpl dao = new AdministratorDaoImpl();
 		boolean redult = dao.loginAdministrator(userName, password);
 		System.out.println(redult);
 	}
 	
-	@Ignore
-	public void testRegisterAdministrator() throws IOException, SQLException{
+	@Test
+	public void testRegisterAdministrator() throws SQLException{
 		Administrator admin = new Administrator();
 		AdministratorDao dao = new AdministratorDaoImpl();
 		admin.setUser("ABC");
 		admin.setPassword("Test");
 		admin.setPermission(1);
-		dao.registerAdministrator(admin);
+		dao.addAdministrator(admin);
 	}
 	
-	@Ignore
-	public void testAlertAdministrator() throws IOException, SQLException{
+	@Test
+	public void testAlertAdministrator() throws SQLException{
 
 		Administrator admin = new Administrator();
 		AdministratorDao dao = new AdministratorDaoImpl();
 		
-		admin.setId(2);
+		admin.setId(3);
 		admin.setPassword("123456");
 		admin.setPermission(1);
 		dao.alertAdministrator(admin);
@@ -58,10 +74,8 @@ public class testAdministratorDaoImpl {
 	@Test
 	public void testDeleteAdministrator() throws SQLException{
 		
-		Administrator admin = new Administrator();
 		AdministratorDao dao = new AdministratorDaoImpl();
 		
-		admin.setId(7);
-		dao.deleteAdministrator(admin);
+		dao.deleteAdministrator(6);
 	}
 }

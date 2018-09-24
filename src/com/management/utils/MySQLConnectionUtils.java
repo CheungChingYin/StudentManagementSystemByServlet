@@ -10,13 +10,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-import junit.test.MySQLConnectionTest;
-
 public class MySQLConnectionUtils {
 
 	// 用于连接数据库的工具类
 	public static ResultSet mySQLResult(String sql) {
-		String path = MySQLConnectionTest.class.getClassLoader().getResource("db.properties").getPath();
+		String path = MySQLConnectionUtils.class.getClassLoader().getResource("db.properties").getPath();
 		FileInputStream in = null;
 		Properties properties = new Properties();
 		
@@ -54,7 +52,7 @@ public class MySQLConnectionUtils {
 
 	public static Connection mySQLConnection() {
 
-		String path = MySQLConnectionTest.class.getClassLoader().getResource("db.properties").getPath();
+		String path = MySQLConnectionUtils.class.getClassLoader().getResource("db.properties").getPath();
 		FileInputStream in = null;
 		Properties properties = new Properties();
 		

@@ -1,11 +1,12 @@
 package com.management.dao.impl;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
+import java.util.List;
 
 import com.management.dao.AdministratorDao;
 import com.management.entities.Administrator;
@@ -14,7 +15,7 @@ import com.management.utils.MySQLConnectionUtils;
 public class AdministratorDaoImpl implements AdministratorDao {
 
 	@Override
-	public boolean existAdministrator(Administrator admin) throws SQLException, IOException {
+	public boolean existAdministrator(Administrator admin) throws SQLException {
 
 		String adminName = admin.getUser();
 		String sql = "SELECT * FROM administrator WHERE user='" + adminName + "'";
@@ -23,7 +24,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
 	}
 
 	@Override
-	public boolean loginAdministrator(String userName, String password) throws IOException, SQLException {
+	public boolean loginAdministrator(String userName, String password) throws SQLException {
 
 		String sql = "SELECT * FROM administrator WHERE user='" + userName + "' AND password='" + password + "'";
 		ResultSet result = MySQLConnectionUtils.mySQLResult(sql);
@@ -31,7 +32,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
 	}
 
 	@Override
-	public void registerAdministrator(Administrator admin) throws IOException, SQLException {
+	public void addAdministrator(Administrator admin) throws SQLException {
 
 		String sql = "INSERT INTO `administrator` (`user`, `password`, `permission`) VALUES (?,?,?)";
 		PreparedStatement ps = null;
@@ -51,45 +52,51 @@ public class AdministratorDaoImpl implements AdministratorDao {
 	}
 
 	@Override
-	public ResultSet queryAllAdministrator() throws IOException {
-		
+	public List<Administrator> queryAllAdministrator() throws SQLException {
+
 		String sql = "SELECT * FROM administrator";
+		List<Administrator> list = new LinkedList<Administrator>();
 		ResultSet result = MySQLConnectionUtils.mySQLResult(sql);
-		return result;
+		while (result.next()) {
+			Administrator admin = new Administrator();
+			admin.setId(result.getInt(1));
+			admin.setUser(result.getString(2));
+			admin.setPassword(result.getString(3));
+			admin.setPermission(result.getInt(4));
+			list.add(admin);
+		}
+		return list;
 	}
 
 	@Override
-	public void alertAdministrator(Administrator admin) throws IOException, SQLException {
-		
+	public void alertAdministrator(Administrator admin) throws SQLException {
+
 		Integer id = admin.getId();
 		String password = admin.getPassword();
 		Integer permission = admin.getPermission();
-		
+
 		String sql = "UPDATE `administrator` SET `password` = ?,`permission` = ? WHERE (`id` = ?)";
-		
+
 		Connection con = MySQLConnectionUtils.mySQLConnection();
 		PreparedStatement ps = con.prepareStatement(sql);
-		
+
 		ps.setString(1, password);
 		ps.setInt(2, permission);
 		ps.setInt(3, id);
-		
+
 		ps.execute();
-		
-		
-		
+
 	}
 
 	@Override
-	public void deleteAdministrator(Administrator admin) throws SQLException {
-		
-		Integer id = admin.getId();
+	public void deleteAdministrator(Integer id) throws SQLException {
+
 		String sql = "DELETE FROM `administrator` WHERE (`id`='" + id + "')";
-		
+
 		Connection con = MySQLConnectionUtils.mySQLConnection();
 		Statement statement = con.createStatement();
 		statement.execute(sql);
-		
+
 	}
 
 }
