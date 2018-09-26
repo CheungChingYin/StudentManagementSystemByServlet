@@ -8,6 +8,7 @@ public class Student {
 	private String name;
 	private Integer sex;
 	private Date birth;
+	private Date schoolDay;
 	private Integer major_id;
 	private Integer college_id;
 
@@ -37,6 +38,15 @@ public class Student {
 
 	public Date getBirth() {
 		return birth;
+	}
+	
+
+	public Date getSchoolDay() {
+		return schoolDay;
+	}
+
+	public void setSchoolDay(Date schoolDay) {
+		this.schoolDay = schoolDay;
 	}
 
 	public void setBirth(Date birth) {

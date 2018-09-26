@@ -27,8 +27,9 @@ public class StudentDaoImpl implements StudentDao {
 			stu.setName(result.getString(2));
 			stu.setSex(result.getInt(3));
 			stu.setBirth(result.getDate(4));
-			stu.setMajor_id(result.getInt(5));
-			stu.setCollege_id(result.getInt(6));
+			stu.setSchoolDay(result.getDate(5));
+			stu.setMajor_id(result.getInt(6));
+			stu.setCollege_id(result.getInt(7));
 			list.add(stu);
 		}
 		return list;
@@ -45,6 +46,7 @@ public class StudentDaoImpl implements StudentDao {
 			stu.setName(result.getString(2));
 			stu.setSex(result.getInt(3));
 			stu.setBirth(result.getDate(4));
+			stu.setSchoolDay(result.getDate(5));
 			stu.setMajor_id(result.getInt(5));
 			stu.setCollege_id(result.getInt(6));
 		}
@@ -58,10 +60,11 @@ public class StudentDaoImpl implements StudentDao {
 		String name = student.getName();
 		Integer sex = student.getSex();
 		Date birth = student.getBirth();
+		Date schoolDate = student.getSchoolDay();
 		Integer major_id = student.getMajor_id();
 		Integer college_id = student.getCollege_id();
 
-		String sql = "INSERT INTO `student` (`id`, `name`, `sex`,`birth`,`major_id`,`college_id`) VALUES (?,?,?,?,?,?)";
+		String sql = "INSERT INTO `student` (`id`, `name`, `sex`,`birth`,`schoolday`,`major_id`,`college_id`) VALUES (?,?,?,?,?,?,?)";
 		Connection con = MySQLConnectionUtils.mySQLConnection();
 		PreparedStatement ps = con.prepareStatement(sql);
 
@@ -69,8 +72,9 @@ public class StudentDaoImpl implements StudentDao {
 		ps.setString(2, name);
 		ps.setInt(3, sex);
 		ps.setDate(4, birth);
-		ps.setInt(5, major_id);
-		ps.setInt(6, college_id);
+		ps.setDate(5, schoolDate);
+		ps.setInt(6, major_id);
+		ps.setInt(7, college_id);
 
 		ps.execute();
 
@@ -83,19 +87,21 @@ public class StudentDaoImpl implements StudentDao {
 		String name = student.getName();
 		Integer sex = student.getSex();
 		Date birth = student.getBirth();
+		Date schoolDate = student.getSchoolDay();
 		Integer major_id = student.getMajor_id();
 		Integer college_id = student.getCollege_id();
 
-		String sql = "UPDATE `student` SET `name`=?, `sex`=?, `birth`=?, `major_id`=?, `college_id`=? WHERE (`id`=?)";
+		String sql = "UPDATE `student` SET `name`=?, `sex`=?, `birth`=?,`schoolday`=?, `major_id`=?, `college_id`=? WHERE (`id`=?)";
 		Connection con = MySQLConnectionUtils.mySQLConnection();
 		PreparedStatement ps = con.prepareStatement(sql);
 
 		ps.setString(1, name);
 		ps.setInt(2, sex);
 		ps.setDate(3, birth);
-		ps.setInt(4, major_id);
-		ps.setInt(5, college_id);
-		ps.setString(6, id);
+		ps.setDate(4, schoolDate);
+		ps.setInt(5, major_id);
+		ps.setInt(6, college_id);
+		ps.setString(7, id);
 
 		ps.execute();
 	}

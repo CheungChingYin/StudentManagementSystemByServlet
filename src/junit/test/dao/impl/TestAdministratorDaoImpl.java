@@ -10,6 +10,7 @@ import org.junit.Test;
 import com.management.dao.AdministratorDao;
 import com.management.dao.impl.AdministratorDaoImpl;
 import com.management.entities.Administrator;
+import com.management.exception.AdministratorExistException;
 
 public class TestAdministratorDaoImpl {
 	
@@ -27,12 +28,24 @@ public class TestAdministratorDaoImpl {
 		}
 		
 	}
+	
+	@Test
+	public void testQueryAdministratorById(){
+		AdministratorDaoImpl dao = new AdministratorDaoImpl();
+		try {
+			Administrator admin = dao.queryAdministratorById(2);
+			System.out.println(admin.getId()+" : "+admin.getUser()+" : "+admin.getPassword()+" : "+admin.getPermission());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	@Test
-	public void testExistAdministrator() throws SQLException{
+	public void testExistAdministrator() throws SQLException, AdministratorExistException{
 		Administrator admin = new Administrator();
 		admin.setId(1);
-		admin.setUser("abc");
+		admin.setUser("abc1");
 		admin.setPassword("admin");
 		admin.setPermission(1);
 		AdministratorDaoImpl dao = new AdministratorDaoImpl();
@@ -65,6 +78,7 @@ public class TestAdministratorDaoImpl {
 		Administrator admin = new Administrator();
 		AdministratorDao dao = new AdministratorDaoImpl();
 		
+		admin.setUser("test");
 		admin.setId(3);
 		admin.setPassword("123456");
 		admin.setPermission(1);

@@ -10,12 +10,13 @@ import java.util.List;
 
 import com.management.dao.AdministratorDao;
 import com.management.entities.Administrator;
+import com.management.exception.AdministratorExistException;
 import com.management.utils.MySQLConnectionUtils;
 
 public class AdministratorDaoImpl implements AdministratorDao {
 
 	@Override
-	public boolean existAdministrator(Administrator admin) throws SQLException {
+	public boolean existAdministrator(Administrator admin) throws AdministratorExistException, SQLException {
 
 		String adminName = admin.getUser();
 		String sql = "SELECT * FROM administrator WHERE user='" + adminName + "'";
@@ -69,20 +70,37 @@ public class AdministratorDaoImpl implements AdministratorDao {
 	}
 
 	@Override
+	public Administrator queryAdministratorById(Integer id) throws SQLException {
+
+		String sql = "SELECT * FROM administrator WHERE id='" + id + "'";
+		ResultSet result = MySQLConnectionUtils.mySQLResult(sql);
+		Administrator admin = new Administrator();
+		while (result.next()) {
+			admin.setId(result.getInt(1));
+			admin.setUser(result.getString(2));
+			admin.setPassword(result.getString(3));
+			admin.setPermission(result.getInt(4));
+		}
+		return admin;
+	}
+
+	@Override
 	public void alertAdministrator(Administrator admin) throws SQLException {
 
 		Integer id = admin.getId();
+		String user = admin.getUser();
 		String password = admin.getPassword();
 		Integer permission = admin.getPermission();
 
-		String sql = "UPDATE `administrator` SET `password` = ?,`permission` = ? WHERE (`id` = ?)";
+		String sql = "UPDATE `administrator` SET `password` = ?,`permission` = ? ,`user` = ?WHERE (`id` = ?)";
 
 		Connection con = MySQLConnectionUtils.mySQLConnection();
 		PreparedStatement ps = con.prepareStatement(sql);
 
 		ps.setString(1, password);
 		ps.setInt(2, permission);
-		ps.setInt(3, id);
+		ps.setString(3, user);
+		ps.setInt(4, id);
 
 		ps.execute();
 
