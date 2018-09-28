@@ -32,6 +32,14 @@
 			<version>1.10</version>
 		</dependency>
 
+		<!-- 网页request域属性转为bean的相关依赖 -->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.9.3</version>
+		</dependency>
+
+
 
 
 

@@ -18,7 +18,19 @@ public class StudentDaoImpl implements StudentDao {
 	@Override
 	public List<Student> queryAllStudents() throws SQLException {
 
-		String sql = "SELECT * FROM student";
+		String sql = "SELECT" 
+				+ " student.id," 
+				+ "student.`name`," 
+				+ "student.sex,"
+				+ "student.birth," 
+				+ "student.schoolday,"
+				+ "major.`name`," 
+				+ "college.`name`" 
+				+ " FROM " 
+				+ "student,major,college "
+				+ "WHERE student.major_id = major.id " 
+				+ "AND " 
+				+ "student.college_id =college.id ";
 		ResultSet result = MySQLConnectionUtils.mySQLResult(sql);
 		List<Student> list = new LinkedList<Student>();
 		while (result.next()) {
@@ -28,8 +40,8 @@ public class StudentDaoImpl implements StudentDao {
 			stu.setSex(result.getInt(3));
 			stu.setBirth(result.getDate(4));
 			stu.setSchoolDay(result.getDate(5));
-			stu.setMajor_id(result.getInt(6));
-			stu.setCollege_id(result.getInt(7));
+			stu.setMajorName(result.getString(6));
+			stu.setCollegeName(result.getString(7));
 			list.add(stu);
 		}
 		return list;
@@ -38,7 +50,7 @@ public class StudentDaoImpl implements StudentDao {
 	@Override
 	public Student queryStudentById(String id) throws SQLException {
 
-		String sql = "SELECT * FROM `student` WHERE id = '" + id + "'";
+		String sql = "SELECT student.id,student.`name`,student.sex,student.birth,student.schoolday,major.`name`,college.`name` FROM student,major,college WHERE student.major_id = major.id AND student.college_id =college.id AND student.id='"+id+"'";
 		ResultSet result = MySQLConnectionUtils.mySQLResult(sql);
 		Student stu = new Student();
 		while (result.next()) {
@@ -47,10 +59,30 @@ public class StudentDaoImpl implements StudentDao {
 			stu.setSex(result.getInt(3));
 			stu.setBirth(result.getDate(4));
 			stu.setSchoolDay(result.getDate(5));
-			stu.setMajor_id(result.getInt(5));
-			stu.setCollege_id(result.getInt(6));
+			stu.setMajorName(result.getString(6));
+			stu.setCollegeName(result.getString(7));
 		}
 		return stu;
+	}
+	
+	@Override
+	public List<Student> queryStudentByName(String name) throws SQLException {
+		
+		String sql ="SELECT student.id,student.`name`,student.sex,student.birth,student.schoolday,major.`name`,college.`name` FROM student,major,college WHERE student.major_id = major.id AND student.college_id =college.id AND student.name='"+name+"'";
+		ResultSet result = MySQLConnectionUtils.mySQLResult(sql);
+		List<Student> list = new LinkedList<Student>();
+		while(result.next()){
+			Student stu = new Student();
+			stu.setId(result.getString(1));
+			stu.setName(result.getString(2));
+			stu.setSex(result.getInt(3));
+			stu.setBirth(result.getDate(4));
+			stu.setSchoolDay(result.getDate(5));
+			stu.setMajorName(result.getString(6));
+			stu.setCollegeName(result.getString(7));
+			list.add(stu);
+		}
+		return list;
 	}
 
 	@Override
@@ -113,6 +145,14 @@ public class StudentDaoImpl implements StudentDao {
 		Connection con = MySQLConnectionUtils.mySQLConnection();
 		Statement statement = con.createStatement();
 		statement.execute(sql);
+	}
+
+	@Override
+	public boolean studentIsExist(String id) throws SQLException {
+
+		String sql = "SELECT * FROM `student` WHERE id = '" + id + "'";
+		ResultSet res = MySQLConnectionUtils.mySQLResult(sql);
+		return res.next();
 	}
 
 }

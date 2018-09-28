@@ -1,5 +1,7 @@
 package com.management.service;
 
+import java.util.List;
+
 import com.management.entities.Administrator;
 
 public interface AdministratorService {
@@ -13,5 +15,7 @@ public interface AdministratorService {
 	public Integer countAllAdministrator();
 	
 	public boolean login(String user,String password);
+	
+	public List<Administrator> getAllAdministrator();
 
 }

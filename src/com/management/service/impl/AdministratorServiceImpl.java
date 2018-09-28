@@ -111,10 +111,23 @@ public class AdministratorServiceImpl implements AdministratorService {
 			boolean result = dao.loginAdministrator(user, encryptionPassword);
 			return result;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
 	}
+
+	@Override
+	public List<Administrator> getAllAdministrator() {
+		
+		List<Administrator> list = null;
+		try {
+			list = dao.queryAllAdministrator();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	
 
 }

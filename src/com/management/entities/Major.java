@@ -1,10 +1,14 @@
 package com.management.entities;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Major {
 
 	private Integer id;
 	private String name;
 	private Integer college_id;
+	
 
 	public Integer getId() {
 		return id;
@@ -29,5 +33,6 @@ public class Major {
 	public void setCollege_id(Integer college_id) {
 		this.college_id = college_id;
 	}
+
 
 }

@@ -22,7 +22,7 @@ public class StudentDaoImplTest {
 			list = dao.queryAllStudents();
 			for (Student stu : list) {
 				System.out.println(stu.getId() + " ; " + stu.getName() + " ; " + stu.getSex() + " ; " + stu.getBirth()
-						+ " ; " + stu.getSchoolDay() + " ; " + stu.getMajor_id() + " ; " + stu.getCollege_id() + " ; ");
+						+ " ; " + stu.getSchoolDay() + " ; " + stu.getMajorName() + " ; " + stu.getCollegeName() + " ; ");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -38,12 +38,29 @@ public class StudentDaoImplTest {
 		try {
 			Student stu = dao.queryStudentById("123271631102102");
 			System.out.println(stu.getId() + " ; " + stu.getName() + " ; " + stu.getSex() + " ; " + stu.getBirth()
-					+ " ; " + stu.getSchoolDay() + " ; " + stu.getMajor_id() + " ; " + stu.getCollege_id() + " ; ");
+			+ " ; " + stu.getSchoolDay() + " ; " + stu.getMajorName() + " ; " + stu.getCollegeName() + " ; ");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+	}
+	
+	@Test
+	public void testQueryStudentByName(){
+		StudentDao dao = new StudentDaoImpl();
+		List<Student> list;
+		try {
+			list = dao.queryStudentByName("李四");
+			for (Student stu : list) {
+				System.out.println(stu.getId() + " ; " + stu.getName() + " ; " + stu.getSex() + " ; " + stu.getBirth()
+						+ " ; " + stu.getSchoolDay() + " ; " + stu.getMajorName() + " ; " + stu.getCollegeName() + " ; ");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Test
@@ -102,6 +119,18 @@ public class StudentDaoImplTest {
 		StudentDao dao = new StudentDaoImpl();
 		try {
 			dao.deleteStudent("123271631102103");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testStudentIsExist(){
+		
+		StudentDao dao = new StudentDaoImpl();
+		try {
+			System.out.println(dao.studentIsExist("123271631102202"));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

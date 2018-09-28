@@ -1,5 +1,7 @@
 package junit.test.service.impl;
 
+import java.util.List;
+
 import org.junit.Test;
 
 import com.management.entities.Administrator;
@@ -46,6 +48,14 @@ public class AdministratorServiceImplTest {
 	@Test
 	public void testLogin() {
 		System.out.println(service.login("abcd", "abcd1"));
+	}
+	
+	@Test
+	public void testGetAllAdministrator(){
+		List<Administrator> list= service.getAllAdministrator();
+		for(Administrator admin : list){
+			System.out.println(admin.getId()+" ; "+admin.getUser()+" ; "+admin.getPassword()+" ; "+admin.getPermission());
+		}
 	}
 
 }

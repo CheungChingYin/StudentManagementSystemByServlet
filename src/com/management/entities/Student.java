@@ -1,6 +1,8 @@
 package com.management.entities;
 
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Student {
 
@@ -11,6 +13,9 @@ public class Student {
 	private Date schoolDay;
 	private Integer major_id;
 	private Integer college_id;
+	private String majorName;
+	private String collegeName;
+	private Map<String, String> errors = new HashMap<String, String>();
 
 	public String getId() {
 		return id;
@@ -68,5 +73,31 @@ public class Student {
 	public void setCollege_id(Integer college_id) {
 		this.college_id = college_id;
 	}
+	
+	public String getMajorName() {
+		return majorName;
+	}
+
+	public void setMajorName(String majorName) {
+		this.majorName = majorName;
+	}
+
+	public String getCollegeName() {
+		return collegeName;
+	}
+
+	public void setCollegeName(String collegeName) {
+		this.collegeName = collegeName;
+	}
+
+	public Map<String, String> getErrors() {
+		return errors;
+	}
+
+	public void setErrors(Map<String, String> errors) {
+		this.errors = errors;
+	}
+	
+	
 
 }

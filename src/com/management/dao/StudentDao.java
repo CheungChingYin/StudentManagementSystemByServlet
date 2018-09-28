@@ -11,10 +11,14 @@ public interface StudentDao {
 	
 	public Student queryStudentById(String id) throws SQLException;
 	
+	public List<Student> queryStudentByName(String name) throws SQLException;
+	
 	public void addStudent(Student student) throws SQLException;
 	
 	public void alertStudent(Student student) throws SQLException;
 	
 	public void deleteStudent(String id) throws SQLException;
+	
+	public boolean studentIsExist(String id) throws SQLException;
 	
 }
