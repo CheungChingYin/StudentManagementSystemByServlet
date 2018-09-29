@@ -1,7 +1,5 @@
 package junit.test.service.impl;
 
-import static org.junit.Assert.*;
-
 import java.sql.Date;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +13,7 @@ import com.management.utils.CheckDataValidity;
 import com.management.utils.DateConvertor;
 
 public class StudentServiceImplTest {
-	
+
 	private StudentService service = new StudentServiceImpl();
 
 	@Test
@@ -24,7 +22,7 @@ public class StudentServiceImplTest {
 		Student student = new Student();
 		Date birth = DateConvertor.stringDate2SqlDate("1999-03-25");
 		Date schoolDay = DateConvertor.stringDate2SqlDate("2018-09-01");
-		student.setId("123271631102103");
+		student.setId("1232716311023");
 		student.setName("王五");
 		student.setBirth(birth);
 		student.setSchoolDay(schoolDay);
@@ -32,15 +30,12 @@ public class StudentServiceImplTest {
 		student.setMajor_id(15);
 		student.setCollege_id(2);
 		
-		if(CheckDataValidity.checkStudentValidate(student)){
-			service.addStudent(student);
-		}else{
-			for(Map.Entry<String,String> entry :student.getErrors().entrySet()){
-				System.out.println("Key:"+entry.getKey()+" ; "+"value"+ entry.getValue());
-			}
+		service.addStudent(student);
+
+		for (Map.Entry<String, String> entry : student.getErrors().entrySet()) {
+			System.out.println("Key:" + entry.getKey() + " ; " + "value" + entry.getValue());
 		}
-		
-		
+
 	}
 
 	@Test
@@ -55,14 +50,11 @@ public class StudentServiceImplTest {
 		student.setSex(1);
 		student.setMajor_id(15);
 		student.setCollege_id(2);
-		
-		if(CheckDataValidity.checkStudentValidate(student)){
-			service.alertStudent(student);;
-		}else{
-			for(Map.Entry<String,String> entry :student.getErrors().entrySet()){
-				System.out.println("Key:"+entry.getKey()+" ; "+"value"+ entry.getValue());
+
+			service.alertStudent(student);
+			for (Map.Entry<String, String> entry : student.getErrors().entrySet()) {
+				System.out.println("Key:" + entry.getKey() + " ; " + "value" + entry.getValue());
 			}
-		}
 	}
 
 	@Test
@@ -73,22 +65,25 @@ public class StudentServiceImplTest {
 	@Test
 	public void testQueryAllStudent() {
 		List<Student> list = service.queryAllStudent();
-		for(Student s :list){
-			System.out.println(s.getId()+";"+s.getName()+";"+s.getSex()+";"+s.getBirth()+";"+s.getSchoolDay()+";"+s.getMajorName()+";"+s.getCollegeName());
+		for (Student s : list) {
+			System.out.println(s.getId() + ";" + s.getName() + ";" + s.getSex() + ";" + s.getBirth() + ";"
+					+ s.getSchoolDay() + ";" + s.getMajorName() + ";" + s.getCollegeName());
 		}
 	}
 
 	@Test
 	public void testSearchStudentById() {
 		Student s = service.searchStudentById("123271631102101");
-		System.out.println(s.getId()+";"+s.getName()+";"+s.getSex()+";"+s.getBirth()+";"+s.getSchoolDay()+";"+s.getMajorName()+";"+s.getCollegeName());
+		System.out.println(s.getId() + ";" + s.getName() + ";" + s.getSex() + ";" + s.getBirth() + ";"
+				+ s.getSchoolDay() + ";" + s.getMajorName() + ";" + s.getCollegeName());
 	}
 
 	@Test
 	public void testSearchStudentByName() {
 		List<Student> list = service.searchStudentByName("李四");
-		for(Student s :list){
-			System.out.println(s.getId()+";"+s.getName()+";"+s.getSex()+";"+s.getBirth()+";"+s.getSchoolDay()+";"+s.getMajorName()+";"+s.getCollegeName());
+		for (Student s : list) {
+			System.out.println(s.getId() + ";" + s.getName() + ";" + s.getSex() + ";" + s.getBirth() + ";"
+					+ s.getSchoolDay() + ";" + s.getMajorName() + ";" + s.getCollegeName());
 		}
 	}
 

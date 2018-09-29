@@ -20,29 +20,43 @@ public class CollegeDaoImpl implements CollegeDao {
 		String sql = "SELECT * FROM college";
 		ResultSet res = MySQLConnectionUtils.mySQLResult(sql);
 		List<College> list = new LinkedList<College>();
-		
-		while(res.next()){
+
+		while (res.next()) {
 			College college = new College();
 			college.setId(res.getInt(1));
 			college.setName(res.getString(2));
 			list.add(college);
 		}
-		
+
 		return list;
 	}
 
 	@Override
 	public College queryCollegeById(Integer id) throws SQLException {
-		
-		String sql = "SELECT * FROM college WHERE id='"+id+"'";
+
+		String sql = "SELECT * FROM college WHERE id='" + id + "'";
 		ResultSet res = MySQLConnectionUtils.mySQLResult(sql);
 		College college = new College();
-		
-		while(res.next()){
+
+		while (res.next()) {
 			college.setId(res.getInt(1));
 			college.setName(res.getString(2));
 		}
-		
+
+		return college;
+	}
+
+	@Override
+	public College queryCollegeByName(String name) throws SQLException {
+
+		String sql = "SELECT * FROM college WHERE name='" + name + "'";
+		ResultSet res = MySQLConnectionUtils.mySQLResult(sql);
+		College college = new College();
+
+		while (res.next()) {
+			college.setId(res.getInt(1));
+			college.setName(res.getString(2));
+		}
 		return college;
 	}
 
@@ -52,13 +66,13 @@ public class CollegeDaoImpl implements CollegeDao {
 		String sql = "INSERT INTO `college` (`id`, `name`) VALUES (?,?)";
 		Connection con = MySQLConnectionUtils.mySQLConnection();
 		PreparedStatement ps = con.prepareStatement(sql);
-		
+
 		Integer id = college.getId();
 		String name = college.getName();
-		
+
 		ps.setInt(1, id);
 		ps.setString(2, name);
-		
+
 		ps.execute();
 
 	}
@@ -69,15 +83,15 @@ public class CollegeDaoImpl implements CollegeDao {
 		String sql = "UPDATE `college` SET `name`=? WHERE (`id`=?)";
 		Connection con = MySQLConnectionUtils.mySQLConnection();
 		PreparedStatement ps = con.prepareStatement(sql);
-		
+
 		Integer id = college.getId();
 		String name = college.getName();
-		
+
 		ps.setString(1, name);
 		ps.setInt(2, id);
-		
+
 		ps.execute();
-		
+
 	}
 
 	@Override
@@ -87,7 +101,7 @@ public class CollegeDaoImpl implements CollegeDao {
 		Connection con = MySQLConnectionUtils.mySQLConnection();
 		Statement statement = con.createStatement();
 		statement.execute(sql);
-		
+
 	}
 
 	@Override

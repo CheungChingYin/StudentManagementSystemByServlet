@@ -40,6 +40,17 @@ public class CollegeDaoImplTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void testQueryCollegeByName(){
+		try {
+			College c = dao.queryCollegeByName("电子信息学院");
+			System.out.println(c.getId()+" : "+c.getName());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	@Test
 	public void testAddCollege() {

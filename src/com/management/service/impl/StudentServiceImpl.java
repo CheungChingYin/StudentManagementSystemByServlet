@@ -3,17 +3,12 @@ package com.management.service.impl;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.management.dao.CollegeDao;
-import com.management.dao.MajorDao;
 import com.management.dao.StudentDao;
-import com.management.dao.impl.CollegeDaoImpl;
-import com.management.dao.impl.MajorDaoImpl;
 import com.management.dao.impl.StudentDaoImpl;
-import com.management.entities.College;
-import com.management.entities.Major;
 import com.management.entities.Student;
 import com.management.exception.StudentExistException;
 import com.management.service.StudentService;
+import com.management.utils.CheckDataValidity;
 
 public class StudentServiceImpl implements StudentService {
 
@@ -26,7 +21,9 @@ public class StudentServiceImpl implements StudentService {
 			if (dao.studentIsExist(student.getId())) {
 				throw new StudentExistException();
 			}
-			dao.addStudent(student);
+			if(CheckDataValidity.checkStudentValidate(student)){
+				dao.addStudent(student);
+			}
 
 		} catch (SQLException | StudentExistException e) {
 			e.printStackTrace();
@@ -39,8 +36,9 @@ public class StudentServiceImpl implements StudentService {
 
 		try {
 			if (dao.studentIsExist(student.getId())) {
-
-				dao.alertStudent(student);
+				if(CheckDataValidity.checkStudentValidate(student)){
+					dao.alertStudent(student);
+				}
 			} else {
 				throw new StudentExistException();
 			}

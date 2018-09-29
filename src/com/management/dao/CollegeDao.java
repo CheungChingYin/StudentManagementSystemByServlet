@@ -11,6 +11,8 @@ public interface CollegeDao {
 	
 	public College queryCollegeById(Integer id) throws SQLException;
 	
+	public College queryCollegeByName(String name) throws SQLException;
+	
 	public void addCollege(College college) throws SQLException;
 	
 	public void alertCollege(College college) throws SQLException;

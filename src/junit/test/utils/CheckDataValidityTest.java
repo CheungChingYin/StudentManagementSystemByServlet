@@ -8,6 +8,8 @@ import java.util.Map;
 import org.junit.Test;
 
 import com.management.entities.Administrator;
+import com.management.entities.College;
+import com.management.entities.Major;
 import com.management.entities.Student;
 import com.management.utils.CheckDataValidity;
 import com.management.utils.DateConvertor;
@@ -43,6 +45,26 @@ public class CheckDataValidityTest {
 		System.out.println(CheckDataValidity.checkStudentValidate(s));
 		for(Map.Entry<String, String> entry : s.getErrors().entrySet()){
 			System.out.println("key:" + entry.getKey() + " ; " + "value:" + entry.getValue());
+		}
+	}
+	
+	@Test
+	public void testCheckMajorValidate(){
+		Major m = new Major();
+		m.setId(33);
+		m.setName("@");
+		m.setCollege_id(3);
+		System.out.println(CheckDataValidity.checkMajorValidate(m));
+	}
+	
+	@Test
+	public void testCheckCollegeValidate(){
+		College c = new College();
+		c.setId(6);
+		c.setName("a@");
+		System.out.println(CheckDataValidity.checkCollegeValidate(c));
+		for(Map.Entry<String, String> entry :c.getErrors().entrySet()){
+			System.out.println(entry.getKey()+";"+entry.getValue());
 		}
 	}
 

@@ -5,6 +5,8 @@ import java.sql.Date;
 import org.apache.commons.beanutils.locale.converters.DateLocaleConverter;
 
 import com.management.entities.Administrator;
+import com.management.entities.College;
+import com.management.entities.Major;
 import com.management.entities.Student;
 
 public class CheckDataValidity {
@@ -106,6 +108,38 @@ public class CheckDataValidity {
 		// 7.学院名称不能为空
 		if (college_id == null) {
 			stu.getErrors().put("college_id", "学院id不能为空");
+		}
+		return isOk;
+	}
+
+	public static boolean checkMajorValidate(Major major) {
+
+		boolean isOk = true;
+
+		if (major.getName() == null || major.getName().trim().equals("")) {
+			isOk = false;
+		} else if (!major.getName().matches("^[\u4e00-\u9fa5_a-zA-Z0-9]+$")) {
+			isOk = false;
+		}
+		if (major.getCollege_id() == null || major.getCollege_id().toString().equals("")) {
+			isOk = false;
+		} else if (!major.getCollege_id().toString().matches("[0-9]+")) {
+			isOk = false;
+		}
+
+		return isOk;
+	}
+
+	public static boolean checkCollegeValidate(College college) {
+
+		boolean isOk = true;
+
+		if (college.getName() == null || college.getName().trim().equals("")) {
+			college.getErrors().put("name", "用户名不能为空！");
+			isOk = false;
+		} else if (!college.getName().matches("^[\u4e00-\u9fa5_a-zA-Z]+$")){
+			college.getErrors().put("name", "用户名必须为中文或者是英文");
+			isOk = false;
 		}
 		return isOk;
 	}

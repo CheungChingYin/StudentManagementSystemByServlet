@@ -17,7 +17,7 @@ public class MajorDaoImpl implements MajorDao {
 	@Override
 	public List<Major> queryAllMajor() throws SQLException {
 
-		String sql = "SELECT * FROM major";
+		String sql = "SELECT major.id,major.`name`,college.`name` FROM major,college WHERE major.college_id=college.id";
 
 		List<Major> list = new LinkedList<Major>();
 		ResultSet res = MySQLConnectionUtils.mySQLResult(sql);
@@ -25,7 +25,8 @@ public class MajorDaoImpl implements MajorDao {
 			Major major = new Major();
 			major.setId(res.getInt(1));
 			major.setName(res.getString(2));
-			major.setCollege_id(res.getInt(3));
+			major.setCollegeName(res.getString(3));
+			;
 			list.add(major);
 		}
 		return list;
@@ -34,14 +35,49 @@ public class MajorDaoImpl implements MajorDao {
 	@Override
 	public Major queryMajorById(Integer id) throws SQLException {
 
-		String sql = "SELECT * FROM major WHERE `id`='" + id + "'";
+		String sql = "SELECT major.id,major.`name`,college.`name` FROM major,college WHERE major.college_id=college.id AND major.`id`='"
+				+ id + "'";
 
 		ResultSet res = MySQLConnectionUtils.mySQLResult(sql);
 		Major major = new Major();
 		while (res.next()) {
 			major.setId(res.getInt(1));
 			major.setName(res.getString(2));
-			major.setCollege_id(res.getInt(3));
+			major.setCollegeName(res.getString(3));
+		}
+		return major;
+	}
+
+	@Override
+	public List<Major> queryMajorByCollege(Integer id) throws SQLException {
+
+		String sql = "SELECT major.id,major.`name`,college.`name` FROM major,college WHERE major.college_id=college.id AND major.`college_id`='"
+				+ id + "'";
+
+		List<Major> list = new LinkedList<Major>();
+		ResultSet res = MySQLConnectionUtils.mySQLResult(sql);
+		while (res.next()) {
+			Major major = new Major();
+			major.setId(res.getInt(1));
+			major.setName(res.getString(2));
+			major.setCollegeName(res.getString(3));
+			list.add(major);
+		}
+		return list;
+	}
+
+	@Override
+	public Major queryMajorByName(String name) throws SQLException {
+
+		String sql = "SELECT major.id,major.`name`,college.`name` FROM major,college WHERE major.college_id=college.id AND major.`name`='"
+				+ name + "'";
+
+		Major major = new Major();
+		ResultSet res = MySQLConnectionUtils.mySQLResult(sql);
+		while (res.next()) {
+			major.setId(res.getInt(1));
+			major.setName(res.getString(2));
+			major.setCollegeName(res.getString(3));
 		}
 		return major;
 	}

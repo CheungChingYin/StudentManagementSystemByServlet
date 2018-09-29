@@ -1,7 +1,5 @@
 package junit.test.dao.impl;
 
-import static org.junit.Assert.*;
-
 import java.sql.SQLException;
 import java.util.List;
 
@@ -21,7 +19,7 @@ public class MajorDaoImplTest {
 		try {
 			List<Major> list = dao.queryAllMajor();
 			for(Major m : list){
-				System.out.println(m.getId()+" : "+m.getName()+" : "+m.getCollege_id()+" : ");
+				System.out.println(m.getId()+" : "+m.getName()+" : "+m.getCollegeName()+" : ");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -33,7 +31,31 @@ public class MajorDaoImplTest {
 	@Test
 	public void testQueryMajorById() throws SQLException {
 		Major m = dao.queryMajorById(2);
-		System.out.println(m.getId()+" : "+m.getName()+" : "+m.getCollege_id()+" : ");
+		System.out.println(m.getId()+" : "+m.getName()+" : "+m.getCollegeName()+" : ");
+	}
+	
+	@Test
+	public void testQueryMajorByCollege(){
+		try {
+			List<Major> list = dao.queryMajorByCollege(3);
+			for(Major m : list){
+				System.out.println(m.getId()+";"+m.getName()+";"+m.getCollegeName());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testQueryMajorByName(){
+		Major m = null;
+		try {
+			m = dao.queryMajorByName("电子商务");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println(m.getId()+";"+m.getName()+";"+m.getCollegeName());
+		
 	}
 
 	@Test
