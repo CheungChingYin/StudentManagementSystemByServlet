@@ -17,9 +17,9 @@ public class AdministratorServiceImplTest {
 	public void testRegiest() {
 		
 		Administrator admin = new Administrator();
-		admin.setUser("abcd");
-		admin.setPassword("a123456789");
-		admin.setPermission(0);
+		admin.setUser("张三");
+		admin.setPassword("abc123456");
+		admin.setPermission(1);
 		
 		service.regiest(admin);
 		for(Map.Entry<String, String> e:admin.getError().entrySet()){
