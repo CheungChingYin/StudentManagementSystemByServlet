@@ -39,6 +39,14 @@
 			<version>1.9.3</version>
 		</dependency>
 
+		<!-- Google的Json生成器 -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+
+
 
 	</dependencies>
 </project>

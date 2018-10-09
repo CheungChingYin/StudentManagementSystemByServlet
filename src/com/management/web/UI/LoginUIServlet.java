@@ -24,7 +24,7 @@ public class LoginUIServlet extends HttpServlet {
 				if (cookie.getName().equals("JSESSIONID")) {// 判断是否存在第一次登录时存放的cookie
 					if (session.getAttribute("admin") != null) {// 判断服务器里面的存放的cookie是否存在
 						// 直接重定向到主界面
-						response.sendRedirect(request.getContextPath() + "/home");
+						response.sendRedirect(request.getContextPath() + "/Home");
 						return;
 					}
 				}

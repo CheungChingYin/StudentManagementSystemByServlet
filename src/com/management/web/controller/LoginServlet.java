@@ -39,10 +39,10 @@ public class LoginServlet extends HttpServlet {
 				cookie.setMaxAge(7 * 24 * 3600);// cookie的有效期也为7天
 				cookie.setPath("/");
 				response.addCookie(cookie);//设置Cookie
-				response.getWriter().write("<script language='JavaScript'>alert('登录成功');window.location.href='"+request.getContextPath()+"/home'</script>");
+				response.getWriter().write("<script language='JavaScript'>alert('登录成功');window.location.href='"+request.getContextPath()+"/Home'</script>");
 			} else {
 				session.setAttribute("admin", user);
-				response.getWriter().write("<script language='JavaScript'>alert('登录成功');window.location.href='"+request.getContextPath()+"/home'</script>");
+				response.getWriter().write("<script language='JavaScript'>alert('登录成功');window.location.href='"+request.getContextPath()+"/Home'</script>");
 			}
 		} else {
 			response.getWriter().write("<script language='JavaScript'>alert('您的用户名或密码有误，请重新输入或者注册');window.location.href='"+request.getContextPath()+"/Login'</script>");

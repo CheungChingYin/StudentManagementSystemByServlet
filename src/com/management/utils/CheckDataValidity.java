@@ -92,7 +92,7 @@ public class CheckDataValidity {
 		// 5.入学日期不能为空
 		if (schoolDay == null) {
 			isOk = false;
-			stu.getErrors().put("birth", "学生入学日期不能为空！");
+			stu.getErrors().put("schoolDay", "学生入学日期不能为空！");
 		}
 		try {
 			DateLocaleConverter dlc = new DateLocaleConverter();
