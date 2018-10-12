@@ -97,6 +97,9 @@ public class MajorDaoImpl implements MajorDao {
 		ps.setString(2, name);
 		ps.setInt(3, collegeId);
 		ps.execute();
+		
+		ps.close();
+		con.close();
 	}
 
 	@Override
@@ -115,6 +118,9 @@ public class MajorDaoImpl implements MajorDao {
 		ps.setInt(3, id);
 
 		ps.execute();
+		
+		ps.close();
+		con.close();
 
 	}
 
@@ -125,6 +131,9 @@ public class MajorDaoImpl implements MajorDao {
 		Connection con = MySQLConnectionUtils.mySQLConnection();
 		Statement statement = con.createStatement();
 		statement.execute(sql);
+		
+		statement.close();
+		con.close();
 	}
 
 	@Override

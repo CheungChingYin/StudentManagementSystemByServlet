@@ -109,6 +109,10 @@ public class StudentDaoImpl implements StudentDao {
 		ps.setInt(7, college_id);
 
 		ps.execute();
+		
+		ps.close();
+		con.close();
+		
 
 	}
 
@@ -136,6 +140,9 @@ public class StudentDaoImpl implements StudentDao {
 		ps.setString(7, id);
 
 		ps.execute();
+		
+		ps.close();
+		con.close();
 	}
 
 	@Override
@@ -145,6 +152,9 @@ public class StudentDaoImpl implements StudentDao {
 		Connection con = MySQLConnectionUtils.mySQLConnection();
 		Statement statement = con.createStatement();
 		statement.execute(sql);
+		
+		statement.close();
+		con.close();
 	}
 
 	@Override

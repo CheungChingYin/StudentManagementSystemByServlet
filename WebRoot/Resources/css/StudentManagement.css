@@ -17,6 +17,10 @@
 	flex: 1;
 }
 
+.stu-alert{
+	margin-right: 10px;
+}
+
 .stu-total {
 	width: 90%;
 	margin: 0 auto;

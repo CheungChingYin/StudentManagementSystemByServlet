@@ -74,6 +74,9 @@ public class CollegeDaoImpl implements CollegeDao {
 		ps.setString(2, name);
 
 		ps.execute();
+		
+		ps.close();
+		con.close();
 
 	}
 
@@ -91,6 +94,9 @@ public class CollegeDaoImpl implements CollegeDao {
 		ps.setInt(2, id);
 
 		ps.execute();
+		
+		ps.close();
+		con.close();
 
 	}
 
@@ -101,6 +107,9 @@ public class CollegeDaoImpl implements CollegeDao {
 		Connection con = MySQLConnectionUtils.mySQLConnection();
 		Statement statement = con.createStatement();
 		statement.execute(sql);
+		
+		statement.close();
+		con.close();
 
 	}
 

@@ -4,7 +4,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>My JSP 'StudentManagement.jsp' starting page</title>
+<title>学生学籍管理</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -34,9 +34,10 @@
 				<button class="btn btn-primary stu-addStudent" data-toggle="modal"
 					data-target="#stu-add" id="stu-add-button">添加学生学籍</button>
 			</div>
-
+	
 		</div>
 	</div>
+	<!-- 学生列表 -->
 	<div class="content">
 		<table class="table table-striped">
 			<thead>
@@ -52,42 +53,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="student" items="${requestScope.studentList }">
-					<tr>
-						<td>${student.id }</td>
-						<td>${student.name }</td>
-						<td><c:if test="${student.sex == 0 }" var="女">女</c:if> <c:if
-								test="${student.sex == 1 }" var="男">男</c:if></td>
-						<td>${student.birth }</td>
-						<td>${student.schoolDay }</td>
-						<td>${student.majorName }</td>
-						<td>${student.collegeName }</td>
-						<td><button class="btn btn-primary stu-alert" value="">修改</button>
-							<button class="btn btn-danger stu-delete" value="">删除</button></td>
-					</tr>
-				</c:forEach>
-
 			</tbody>
 		</table>
-		<div class="stu-total">共${requestScope.allStudentCount }条信息</div>
+		<div class="stu-total" id="stu-total"></div>
+		<!-- 分页功能 -->
 		<div class="pageNav">
 			<ul class="pagination">
-				<li class="page-item" value=""><a class="page-link"
-					href="${pageContext.request.contextPath }/StudentManagement?page=${requestScope.prePage}">上一页</a></li>
-				<c:forEach var="i" items="${requestScope.pageNum }">
-					<c:choose>
-						<c:when test="${requestScope.page ==i }">
-							<li class='page-item active' value=""><a class="page-link"
-								href="${pageContext.request.contextPath }/StudentManagement?page=${i}">${i}</a></li>
-						</c:when>
-						<c:otherwise>
-							<li class='page-item' value=""><a class="page-link"
-								href="${pageContext.request.contextPath }/StudentManagement?page=${i}">${i}</a></li>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-				<li class="page-item" value=""><a class="page-link"
-					href="${pageContext.request.contextPath }/StudentManagement?page=${requestScope.nextPage}">下一页</a></li>
 			</ul>
 		</div>
 	</div>

@@ -49,6 +49,9 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		ps.setInt(3, permission);
 
 		ps.execute();
+		
+		ps.close();
+		con.close();
 
 	}
 
@@ -103,6 +106,9 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		ps.setInt(4, id);
 
 		ps.execute();
+		
+		ps.close();
+		con.close();
 
 	}
 
@@ -114,6 +120,9 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		Connection con = MySQLConnectionUtils.mySQLConnection();
 		Statement statement = con.createStatement();
 		statement.execute(sql);
+		
+		statement.close();
+		con.close();
 
 	}
 
