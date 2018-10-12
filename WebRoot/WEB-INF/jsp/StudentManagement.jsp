@@ -28,7 +28,7 @@
 			<div class="stu-search input-group-lg">
 				<input type="text" class="stu-search-bar" name="search"
 					placeholder="请输入学号或者姓名">
-				<button class="btn btn-secondary stu-search-button">搜索</button>
+				<button class="btn btn-secondary stu-search-button" id="stu-search-button">搜索</button>
 			</div>
 			<div>
 				<button class="btn btn-primary stu-addStudent" data-toggle="modal"
@@ -116,7 +116,65 @@
 				<!-- 模态框底部 -->
 				<div class="modal-footer">
 					<button class="btn btn-primary" id="stu-add-input">提交</button>
-					<button class="btn btn-secondary" id="stu-add-reset">清空</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
+	<!-- 学生修改模态框 -->
+	<div class="modal fade" id="stu-update">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+				<!-- 模态框头部 -->
+				<div class="modal-header">
+					<h4 class="modal-title">更新学生资料</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- 模态框主体 -->
+				<div class="modal-body">
+					<form action="" id="stu-update-form" method="post">
+						<div>
+							<label for="stu-id">学生学号:</label><input type="text" name="id"
+								id="stu-id">
+						</div>
+						<div>
+							<label for="stu-name">学生姓名:</label><input type="text" name="name"
+								id="stu-name">
+						</div>
+						<div>
+							<label for="stu-sex">学生性别:</label> <select id="stu-sex"
+								name="sex">
+								<option value="">---请选择---</option>
+								<option value="0">女</option>
+								<option value="1">男</option>
+							</select>
+						</div>
+						<div>
+							<label for="birth">出生日期:</label><input type="date" name="birth"
+								id="birth">
+						</div>
+						<div>
+							<label for="schoolDay">入学日期:</label><input type="date"
+								name="schoolDay" id="schoolDay">
+						</div>
+						<div>
+							<label for="major">所属专业:</label><select id="major"
+								name="major_id"><option selected="selected" value="">---请选择---</option></select>
+						</div>
+						<div>
+							<label for="college">所属专业:</label><select id="college"
+								name="college_id"><option selected="selected" value="">---请选择---</option></select>
+						</div>
+					</form>
+
+				</div>
+
+				<!-- 模态框底部 -->
+				<div class="modal-footer">
+					<button class="btn btn-primary" id="stu-add-input">提交</button>
 				</div>
 
 			</div>

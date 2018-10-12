@@ -13,6 +13,11 @@ $("#stu-add-button").click(function() {
 	});
 })
 
+$("#stu-search-button").on("click",function(){
+	var search = $(".stu-search-bar").val();
+	request2html("SearchStudent?page=1&search="+search);
+});
+
 /*
  * 学院按钮改变时
  * 当选中学院下拉菜单中的一项时，通过Ajax加载相对应的学院专业
@@ -95,15 +100,30 @@ function request2html(url) {
 		$("tbody").append(res);
 		$("#stu-total").html("");
 		$("#stu-total").append("共" + data.allStudentCount + "条信息");
-		pages += "<li class='page-item' value=''><a class='page-link' id='page' href='" + path + "/StudentManagementContent?page=" + data.prePage + "'>上一页</a></li>";
-		for (var i = 0; i < data.pageNum.length; i++) {
-			if (data.page == data.pageNum[i]) {
-				pages += "<li class='page-item active' value=''><a class='page-link' id='page' href='" + path + "/StudentManagementContent?page=" +data.pageNum[i] + "'>" + data.pageNum[i] + "</a></li>"
-			} else {
-				pages += "<li class='page-item' value=''><a class='page-link' id='page' href='" + path + "/StudentManagementContent?page=" + data.pageNum[i] + "'>" + data.pageNum[i] + "</a></li>"
+		if(data.search == null){
+			//非搜索结果情况下
+			pages += "<li class='page-item' value=''><a class='page-link' id='page' href='" + path + "/StudentManagementContent?page=" + data.prePage + "'>上一页</a></li>";
+			for (var i = 0; i < data.pageNum.length; i++) {
+				if (data.page == data.pageNum[i]) {
+					pages += "<li class='page-item active' value=''><a class='page-link' id='page' href='" + path + "/StudentManagementContent?page=" +data.pageNum[i] + "'>" + data.pageNum[i] + "</a></li>"
+				} else {
+					pages += "<li class='page-item' value=''><a class='page-link' id='page' href='" + path + "/StudentManagementContent?page=" + data.pageNum[i] + "'>" + data.pageNum[i] + "</a></li>"
+				}
 			}
+			pages += "<li class='page-item' value=''><a class='page-link' id='page' href='" + path + "/StudentManagementContent?page=" + data.nextPage + "'>下一页</a></li>"
+		}else{
+			//如果是搜索结果则分页地址要为请求搜索的地址
+			pages += "<li class='page-item' value=''><a class='page-link' id='page' href='" + path + "/SearchStudent?page=" + data.prePage +"&search="+data.search+ "'>上一页</a></li>";
+			for (var i = 0; i < data.pageNum.length; i++) {
+				if (data.page == data.pageNum[i]) {
+					pages += "<li class='page-item active' value=''><a class='page-link' id='page' href='" + path + "/SearchStudent?page=" +data.pageNum[i] +"&search="+data.search+ "'>" + data.pageNum[i] + "</a></li>"
+				} else {
+					pages += "<li class='page-item' value=''><a class='page-link' id='page' href='" + path + "/SearchStudent?page=" +data.pageNum[i] +"&search="+data.search+ "'>" + data.pageNum[i] + "</a></li>"
+				}
+			}
+			pages += "<li class='page-item' value=''><a class='page-link' id='page' href='" + path + "/SearchStudent?page=" + data.nextPage +"&search="+data.search+ "'>下一页</a></li>"
 		}
-		pages += "<li class='page-item' value=''><a class='page-link' id='page' href='" + path + "/StudentManagementContent?page=" + data.nextPage + "'>下一页</a></li>"
+		
 		$('.pageNav ul').html("");
 		$('.pageNav ul').append(pages);
 		//分页点击事件
