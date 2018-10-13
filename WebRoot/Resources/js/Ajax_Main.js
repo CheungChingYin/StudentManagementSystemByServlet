@@ -30,8 +30,10 @@ function requestStudentContent(url) {
 			var sex = "";
 			if (stu[i].sex == 0) {
 				sex = "女";
-			} else {
+			} else if(stu[i].sex == 1) {
 				sex = "男";
+			}else{
+				sex=stu[i].sex;
 			}
 			res += "<tr>" + "<td>" + stu[i].id + "</td>" +
 				"<td>" + stu[i].name + "</td>" +
@@ -41,7 +43,7 @@ function requestStudentContent(url) {
 				"<td>" + stu[i].majorName + "</td>" +
 				"<td>" + stu[i].collegeName + "</td>" +
 				"<td><button class='btn btn-primary stu-alert' value='" + stu[i].id + "' data-toggle='modal' data-target='#stu-update' id='stu-update-button'>修改</button>" +
-				"<button class='btn btn-danger stu-delete' value=''>删除</button></td></tr>";
+				"<button id='stu-delete-button' class='btn btn-danger stu-delete' value='"+stu[i].id+"'>删除</button></td></tr>";
 		}
 		$("tbody").html("");
 		$("tbody").append(res);
@@ -156,4 +158,19 @@ $("#stu-update-form div #college").change(function(){
 		$("#stu-update-form div #major").html("");
 		$("#stu-update-form div #major").append(res);
 	});
+});
+
+$("#table-content").on("click", "#stu-delete-button",function(){
+	var id = $(this).val();
+	alert(id);
+	if(confirm("确定删除吗")){
+		$.get("deleteStudent?id="+id,function(data,status){
+			if(status == 'success'){
+				alert("删除成功!");
+				requestStudentContent("StudentManagementContent?page=1");
+			}else{
+				alert("删除失败，可能您的网络有问题!");
+			}
+		});
+	}
 });
