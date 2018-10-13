@@ -39,7 +39,7 @@
 	</div>
 	<!-- 学生列表 -->
 	<div class="content">
-		<table class="table table-striped">
+		<table class="table table-striped" id="table-content">
 			<thead>
 				<tr>
 					<th>学号</th>
@@ -138,7 +138,7 @@
 					<form action="" id="stu-update-form" method="post">
 						<div>
 							<label for="stu-id">学生学号:</label><input type="text" name="id"
-								id="stu-id">
+								id="stu-id" readonly="readonly">
 						</div>
 						<div>
 							<label for="stu-name">学生姓名:</label><input type="text" name="name"
@@ -162,11 +162,11 @@
 						</div>
 						<div>
 							<label for="major">所属专业:</label><select id="major"
-								name="major_id"><option selected="selected" value="">---请选择---</option></select>
+								name="major_id"></select>
 						</div>
 						<div>
 							<label for="college">所属专业:</label><select id="college"
-								name="college_id"><option selected="selected" value="">---请选择---</option></select>
+								name="college_id"></select>
 						</div>
 					</form>
 
@@ -174,7 +174,7 @@
 
 				<!-- 模态框底部 -->
 				<div class="modal-footer">
-					<button class="btn btn-primary" id="stu-add-input">提交</button>
+					<button class="btn btn-primary" id="stu-update-input">修改</button>
 				</div>
 
 			</div>
