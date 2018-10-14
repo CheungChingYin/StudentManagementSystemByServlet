@@ -23,6 +23,9 @@
 <script
 	src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
+<!-- 引入Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
 <!-- 导入前端数据校验插件 -->
 <script
 	src="https://cdn.staticfile.org/nice-validator/1.1.4/jquery.validator.min.js?local=zh-CN"></script>
@@ -33,23 +36,21 @@
 
 
 
-
-<!--<script
-	src="${pageContext.request.contextPath }/Resources/js/StudentManagement.js"></script> -->
-
 </head>
 
 <body>
 	<div class="top">
 		<h2>您好！${sessionScope.admin}管理员，欢迎使用学生学籍管理系统</h2>
-		<input type="hidden" value="${pageContext.request.contextPath }" id="path">
+		<input type="hidden" value="${pageContext.request.contextPath }"
+			id="path">
 	</div>
 	<div class="bottom">
 		<div class="index">
 			<ul class="nav nav-pills flex-column nav-justified">
 				<li class="nav-item"><a class="nav-link active"
-					href="${pageContext.request.contextPath }/StudentManagement" value="StudentManagement">学生管理</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">管理员管理</a></li>
+					href="${pageContext.request.contextPath }/StudentManagement"
+					value="StudentManagement">学生管理</a></li>
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/AdministratorManagement">管理员管理</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">专业管理</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">学院管理</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">退出登录</a></li>

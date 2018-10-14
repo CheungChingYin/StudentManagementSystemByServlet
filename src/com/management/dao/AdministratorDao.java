@@ -22,4 +22,6 @@ public interface AdministratorDao {
 	
 	public void deleteAdministrator(Integer id) throws SQLException;
 	
+	public Administrator queryAdministratorByName(String name) throws SQLException;
+	
 }

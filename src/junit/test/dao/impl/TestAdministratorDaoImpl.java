@@ -40,6 +40,18 @@ public class TestAdministratorDaoImpl {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void testQueryAdministratorByName(){
+		AdministratorDaoImpl dao = new AdministratorDaoImpl();
+		try {
+			Administrator admin = dao.queryAdministratorByName("张三");
+			System.out.println(admin.getId()+" : "+admin.getUser()+" : "+admin.getPassword()+" : "+admin.getPermission());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	@Test
 	public void testExistAdministrator() throws SQLException, AdministratorExistException{

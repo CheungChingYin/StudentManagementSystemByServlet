@@ -1,4 +1,4 @@
-package com.management.web.controller;
+package com.management.web.controller.college;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,27 +11,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.management.entities.Major;
-import com.management.service.MajorService;
-import com.management.service.impl.MajorServiceImpl;
+import com.management.entities.College;
+import com.management.service.CollegeService;
+import com.management.service.impl.CollegeServiceImpl;
 
-@WebServlet("/getMajor")
-public class GetMajorServlet extends HttpServlet {
+@WebServlet("/getCollege")
+public class GetCollegeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		Integer collegeId = Integer.parseInt(request.getParameter("collegeId"));
-		MajorService service = new MajorServiceImpl();
-		List<Major> list = service.searchMajorByCollegeId(collegeId);
-		
+		CollegeService service = new CollegeServiceImpl();
+		List<College> list = service.searchAllCollege();
 		response.setHeader("Content-Type", "application/json");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
-		
 		Gson gson = new Gson();
-		String major = gson.toJson(list);
-		out.print(major);
+		String college = gson.toJson(list);
+		out.print(college);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

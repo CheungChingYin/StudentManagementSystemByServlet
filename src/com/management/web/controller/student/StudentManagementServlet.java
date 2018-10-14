@@ -1,4 +1,4 @@
-package com.management.web.controller;
+package com.management.web.controller.student;
 
 import java.io.IOException;
 import java.io.PrintWriter;

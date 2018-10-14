@@ -137,4 +137,35 @@ public class AdministratorServiceImpl implements AdministratorService {
 		return list;
 	}
 
+	@Override
+	public Administrator searchAdministratorById(Integer id) {
+		Administrator admin = null;
+		if(id == null){
+			return null;
+		}
+		try {
+			admin = dao.queryAdministratorById(id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return admin;
+	}
+
+	@Override
+	public Administrator searchAdministratorByName(String name) {
+		Administrator admin = null;
+		if(name == null){
+			return null;
+		}
+		try {
+			admin = dao.queryAdministratorByName(name);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return admin;
+	}
+	
+	
+	
+
 }

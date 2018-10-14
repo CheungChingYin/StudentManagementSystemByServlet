@@ -1,4 +1,4 @@
-package com.management.web.controller;
+package com.management.web.controller.administrator;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -34,6 +34,7 @@ public class LoginServlet extends HttpServlet {
 			if (request.getParameter("remeberMe") != null && request.getParameter("remeberMe").equals("on")) {
 				//检查是否勾选了记住我，需要先检查获取是否为空，不然会报空指针异常
 				session.setAttribute("admin", user);
+				session.setAttribute("permission",service.searchAdministratorByName(user).getPermission());
 				session.setMaxInactiveInterval(7 * 24 * 3600);// Session保存7天
 				Cookie cookie = new Cookie("JSESSIONID", session.getId());
 				cookie.setMaxAge(7 * 24 * 3600);// cookie的有效期也为7天
@@ -42,6 +43,7 @@ public class LoginServlet extends HttpServlet {
 				response.getWriter().write("<script language='JavaScript'>alert('登录成功');window.location.href='"+request.getContextPath()+"/Home'</script>");
 			} else {
 				session.setAttribute("admin", user);
+				session.setAttribute("permission",service.searchAdministratorByName(user).getPermission());
 				response.getWriter().write("<script language='JavaScript'>alert('登录成功');window.location.href='"+request.getContextPath()+"/Home'</script>");
 			}
 		} else {

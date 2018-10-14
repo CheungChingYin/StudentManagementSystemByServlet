@@ -65,7 +65,6 @@ public class AdministratorDaoImpl implements AdministratorDao {
 			Administrator admin = new Administrator();
 			admin.setId(result.getInt(1));
 			admin.setUser(result.getString(2));
-			admin.setPassword(result.getString(3));
 			admin.setPermission(result.getInt(4));
 			list.add(admin);
 		}
@@ -81,7 +80,6 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		while (result.next()) {
 			admin.setId(result.getInt(1));
 			admin.setUser(result.getString(2));
-			admin.setPassword(result.getString(3));
 			admin.setPermission(result.getInt(4));
 		}
 		return admin;
@@ -125,5 +123,20 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		con.close();
 
 	}
+
+	@Override
+	public Administrator queryAdministratorByName(String name) throws SQLException {
+		String sql = "SELECT * FROM administrator WHERE user='" + name + "'";
+		ResultSet result = MySQLConnectionUtils.mySQLResult(sql);
+		Administrator admin = new Administrator();
+		while (result.next()) {
+			admin.setId(result.getInt(1));
+			admin.setUser(result.getString(2));
+			admin.setPermission(result.getInt(4));
+		}
+		return admin;
+	}
+	
+	
 
 }
