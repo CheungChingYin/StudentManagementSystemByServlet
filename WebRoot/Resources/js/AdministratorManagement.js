@@ -7,7 +7,8 @@ var vmAdminContent = new Vue({
 		prePage : "",
 		nextPage : "",
 		pageNum : [],
-		page : ""
+		page : "",
+		pageOk:false
 	},
 	mounted : function() {
 		var self = this;
