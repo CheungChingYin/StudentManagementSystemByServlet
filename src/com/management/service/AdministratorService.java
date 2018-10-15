@@ -23,5 +23,7 @@ public interface AdministratorService {
 	public Administrator searchAdministratorByName(String name);
 	
 	public boolean administratorNameIsExist(String name);
+	
+	public void updateAdministratorPassword(Integer id,String password);
 
 }

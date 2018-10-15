@@ -49,7 +49,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		ps.setInt(3, permission);
 
 		ps.execute();
-		
+
 		ps.close();
 		con.close();
 
@@ -102,7 +102,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		ps.setInt(3, id);
 
 		ps.execute();
-		
+
 		ps.close();
 		con.close();
 
@@ -116,7 +116,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		Connection con = MySQLConnectionUtils.mySQLConnection();
 		Statement statement = con.createStatement();
 		statement.execute(sql);
-		
+
 		statement.close();
 		con.close();
 
@@ -134,7 +134,20 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		}
 		return admin;
 	}
-	
-	
+
+	@Override
+	public void alertAdministratorPassword(Integer id, String password) throws SQLException {
+
+		String sql = "UPDATE `administrator` SET `password` = ? WHERE (`id` = ?)";
+		Connection con = MySQLConnectionUtils.mySQLConnection();
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setString(1, password);
+		ps.setInt(2, id);
+		ps.execute();
+
+		ps.close();
+		con.close();
+	}
 
 }

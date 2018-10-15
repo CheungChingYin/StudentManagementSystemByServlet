@@ -37,6 +37,9 @@ var vmAdminContent = new Vue({
 	}
 });
 
+/*
+ * 添加功能表单校验
+ */
 $("#admin-add-form").validator({
 	rules : {
 		nameValidate : [ /[\u4e00-\u9fa5_a-zA-Z_]+/, "管理员姓名必须是中文或者英文" ],
@@ -62,9 +65,11 @@ $("#admin-add-form").validator({
 	})
 });
 
+/*
+ * 修改权限表单校验
+ */
 $("#admin-update-form").validator({
 	rules : {
-		nameValidate : [ /[\u4e00-\u9fa5_a-zA-Z_]+/, "管理员姓名必须是中文或者英文" ],
 		passwordValidate : [ /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,14}$/, "密码需要为字母数字混合,限制为6-14位" ],
 	},
 	fields : {
@@ -88,6 +93,34 @@ $("#admin-update-form").validator({
 	})
 });
 
+
+$("#admin-update-password-form").validator({
+	rules : {
+		passwordValidate : [ /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,14}$/, "密码需要为字母数字混合,限制为6-14位" ],
+	},
+	fields : {
+		'password' : "required;passwordValidate",
+		'password-confirm':"required;passwordValidate;match(password)"
+	},
+
+	valid : $("#admin-update-password-input").click(function() {
+		$.post("updateAdministratorPassword", $("#admin-update-password-form").serialize(), function(data, status) {
+			if (status == "success") {
+				alert("修改密码成功!");
+				$("#admin-add").modal('hide');
+				$(".modal-backdrop").remove();
+				var path = $("#path").val();
+				$('#contain').load(path + "/AdministratorManagement");
+			} else {
+				alert("服务器出现未知错误，添加失败!");
+			}
+		})
+	})
+});
+
+
+
+
 /*
  * 修改按钮点击事件
  * 回显表单
@@ -102,3 +135,20 @@ $("#table-content").on("click", "#admin-update-button", function() {
 		$("#admin-update-form div #admin-permission").val(data.adminList[0].permission);
 	})
 });
+
+
+/*
+ * 修改密码按钮点击事件
+ * 回显表单
+ */
+$("#table-content").on("click", "#admin-alertPassword-button",function(){
+	var id = $(this).val();
+	var path = $("#path").val();
+	var url = "searchAdministraotr?page=1&search=" + id;
+	$.get(url, function(data, status){
+		$("#admin-update-password-form div #admin-id").val(data.adminList[0].id);
+		$("#admin-update-password-form #admin-name").val(data.adminList[0].user);
+		$("#admin-update-password-form #admin-password").val("");
+		$("#admin-update-password-form #admin-password-confirm").val("");
+	})
+})

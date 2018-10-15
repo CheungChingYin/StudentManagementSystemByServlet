@@ -177,4 +177,19 @@ public class AdministratorServiceImpl implements AdministratorService {
 		return res;
 	}
 
+	@Override
+	public void updateAdministratorPassword(Integer id, String password) {
+
+		if(id == null || password == null){
+			return;
+		}
+		try {
+			dao.alertAdministratorPassword(id, password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+
 }

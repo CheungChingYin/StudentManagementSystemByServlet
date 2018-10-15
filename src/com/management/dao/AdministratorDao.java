@@ -24,4 +24,6 @@ public interface AdministratorDao {
 	
 	public Administrator queryAdministratorByName(String name) throws SQLException;
 	
+	public void alertAdministratorPassword(Integer id,String password) throws SQLException;
+	
 }

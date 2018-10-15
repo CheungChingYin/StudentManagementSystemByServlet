@@ -39,8 +39,9 @@
 }
 
 .modal-body div label {
+	display:inline-block;
+	width:100px;
 	margin-left:100px;
-	margin-right: 10px;
 }
 .admin-alertPassword-button{
 	margin-right: 10px;
