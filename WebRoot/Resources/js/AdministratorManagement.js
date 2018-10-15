@@ -8,6 +8,8 @@ var vmAdminContent = new Vue({
 		nextPage : "",
 		pageNum : [],
 		page : "",
+		search:"",
+		flag:true
 	},
 	mounted : function() {
 		var self = this;
@@ -18,6 +20,8 @@ var vmAdminContent = new Vue({
 			self.nextPage = data.nextPage;
 			self.pageNum = data.pageNum;
 			self.allAdminCount = data.allAdminCount;
+			self.search = "";
+			self.flag = true;
 		});
 	},
 	methods : {
@@ -31,8 +35,39 @@ var vmAdminContent = new Vue({
 					vmAdminContent.nextPage = data.nextPage;
 					vmAdminContent.pageNum = data.pageNum;
 					vmAdminContent.allAdminCount = data.allAdminCount;
+					vmAdminContent.search = "";
+					vmAdminContent.flag = true;
 				});
 			});
+		},
+		searchFunction:function(){
+			this.$nextTick(function(){
+				$.get("searchAdministraotr?page=1&search="+$(".admin-search-bar").val(),function(data,status){
+					console.log(data.adminList);
+					vmAdminContent.adminList = data.adminList;
+					vmAdminContent.page = data.page;
+					vmAdminContent.prePage = data.prePage;
+					vmAdminContent.nextPage = data.nextPage;
+					vmAdminContent.pageNum = data.pageNum;
+					vmAdminContent.allAdminCount = data.allAdminCount;
+					vmAdminContent.search = data.search;
+					vmAdminContent.flag = false;
+				})
+			})
+		},
+		searchPage:function(page,search){
+			this.$nextTick(function(){
+				$.get("searchAdministraotr?page="+page+"&search="+search,function(data,status){
+					vmAdminContent.adminList = data.adminList;
+					vmAdminContent.page = data.page;
+					vmAdminContent.prePage = data.prePage;
+					vmAdminContent.nextPage = data.nextPage;
+					vmAdminContent.pageNum = data.pageNum;
+					vmAdminContent.allAdminCount = data.allAdminCount;
+					vmAdminContent.search = data.search;
+					vmAdminContent.flag = false;
+				})
+			})
 		}
 	}
 });
@@ -50,6 +85,10 @@ $("#admin-add-form").validator({
 		'password' : "required;passwordValidate",
 		'permission' : "required"
 	},
+	/**
+	 * 新增管理员表单的提交按钮点击事件
+	 * 提交表单
+	 */
 	valid : $("#admin-add-input").click(function() {
 		$.post("addAdministrator", $("#admin-add-form").serialize(), function(data, status) {
 			if (status == "success") {
@@ -78,6 +117,10 @@ $("#admin-update-form").validator({
 		'permission' : "required"
 	},
 
+	/**
+	 * 表单验证通过后管理员权限更新提交按钮
+	 * 提交表单
+	 */
 	valid : $("#admin-update-input").click(function() {
 		$.post("updateAdministrator", $("#admin-update-form").serialize(), function(data, status) {
 			if (status == "success") {
@@ -94,6 +137,9 @@ $("#admin-update-form").validator({
 });
 
 
+/*
+ * 修改管理员密码表单校验
+ */
 $("#admin-update-password-form").validator({
 	rules : {
 		passwordValidate : [ /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,14}$/, "密码需要为字母数字混合,限制为6-14位" ],
@@ -102,7 +148,10 @@ $("#admin-update-password-form").validator({
 		'password' : "required;passwordValidate",
 		'password-confirm':"required;passwordValidate;match(password)"
 	},
-
+	/**
+	 * 表单验证通过后管理员密码更新提交按钮
+	 * 提交表单
+	 */
 	valid : $("#admin-update-password-input").click(function() {
 		$.post("updateAdministratorPassword", $("#admin-update-password-form").serialize(), function(data, status) {
 			if (status == "success") {
@@ -118,10 +167,19 @@ $("#admin-update-password-form").validator({
 	})
 });
 
+/**
+ * 点击添加管理员按钮事件
+ * 清空表单内容
+ */
+$("#admin-add-button").click(function(){
+	$("#admin-add-form div #admin-name").val("");
+	$("#admin-add-form div #admin-password").val("");
+	$("#admin-add-form div #admin-permission").val("");
+	
+});
 
 
-
-/*
+/**
  * 修改按钮点击事件
  * 回显表单
  */
@@ -137,7 +195,7 @@ $("#table-content").on("click", "#admin-update-button", function() {
 });
 
 
-/*
+/**
  * 修改密码按钮点击事件
  * 回显表单
  */
@@ -151,4 +209,24 @@ $("#table-content").on("click", "#admin-alertPassword-button",function(){
 		$("#admin-update-password-form #admin-password").val("");
 		$("#admin-update-password-form #admin-password-confirm").val("");
 	})
+})
+
+/**
+ * 管理员删除按钮点击事件
+ * 删除相对应的管理员
+ */
+$("#table-content").on("click", "#admin-delete-button",function(){
+	var id = $(this).val();
+	var path = $("#path").val();
+	var url = "deleteAdministrator?id=" + id;
+	if(confirm("确定删除吗")){
+		$.get(url,function(data,status){
+			if(status == 'success'){
+				alert("删除成功!");
+				$('#contain').load(path + "/AdministratorManagement");
+			}else{
+				alert("删除失败，可能您的网络有问题!");
+			}
+		});
+	}
 })

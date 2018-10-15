@@ -27,7 +27,7 @@
 				<input type="text" class="admin-search-bar" name="search"
 					placeholder="请输入ID或者姓名">
 				<button class="btn btn-secondary admin-search-button"
-					id="admin-search-button">搜索</button>
+					id="admin-search-button" @click="searchFunction()">搜索</button>
 			</div>
 			<div>
 				<button class="btn btn-primary admin-addadmindent"
@@ -62,15 +62,19 @@
 		<!-- 分页功能 -->
 		<div class="pageNav">
 			<ul class="pagination">
-				<li class='page-item'><a class='page-link' id='page' href="#" @click="pageChange(prePage)">上一页</a></li>
+				<li class='page-item'><a class='page-link' id='page' href="#" @click="pageChange(prePage)" v-if="flag == true">上一页</a></li>
+				<li class='page-item'><a class='page-link' id='page' href="#" @click="searchPage(prePage,search)" v-if="flag == false">上一页</a></li>
 				<li class='page-item active' v-for="pages in pageNum" v-if="pages==page">
-					<a class='page-link' id='page' @click="pageChange(pages)" href="#">{{pages}}</a>
+					<a class='page-link' id='page' @click="pageChange(pages)" href="#" v-if="flag">{{pages}}</a>
+					<a class='page-link' id='page' @click="searchPage(pages,search)" href="#" v-else>{{pages}}</a>
 				</li>
 				<li class='page-item' v-else>
-					<a class='page-link' id='page' @click="pageChange(pages)" href="#">{{pages}}</a>
+					<a class='page-link' id='page' @click="pageChange(pages)" href="#" v-if="flag">{{pages}}</a>
+					<a class='page-link' id='page' @click="searchPage(pages,search)" href="#" v-else>{{pages}}</a>
 				</li>
 				
-				<li class='page-item'><a class='page-link' id='page' href="#" @click="pageChange(nextPage)">下一页</a></li>
+				<li class='page-item'><a class='page-link' id='page' href="#" @click="pageChange(nextPage)" v-if="flag == true">下一页</a></li>
+				<li class='page-item'><a class='page-link' id='page' href="#" @click="searchPage(nextPage,search)" v-if="flag == false">下一页</a></li>
 			</ul>
 		</div>
 	</div>
