@@ -58,7 +58,7 @@ public class AdministratorManagementServlet extends HttpServlet {
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("adminList", list);
-		map.put("allStudentCount", listCount);
+		map.put("allAdminCount", listCount);
 		map.put("prePage", prePage);
 		map.put("nextPage", nextPage);
 		map.put("pageNum", pageNum);

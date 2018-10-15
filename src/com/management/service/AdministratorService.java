@@ -21,5 +21,7 @@ public interface AdministratorService {
 	public Administrator searchAdministratorById(Integer id);
 
 	public Administrator searchAdministratorByName(String name);
+	
+	public boolean administratorNameIsExist(String name);
 
 }

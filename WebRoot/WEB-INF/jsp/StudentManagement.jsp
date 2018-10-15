@@ -39,7 +39,7 @@
 	</div>
 	<!-- 学生列表 -->
 	<div class="content">
-		<table class="table table-striped" id="table-content">
+		<table class="table table-striped table-hover" id="table-content">
 			<thead>
 				<tr>
 					<th>学号</th>

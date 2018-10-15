@@ -90,18 +90,16 @@ public class AdministratorDaoImpl implements AdministratorDao {
 
 		Integer id = admin.getId();
 		String user = admin.getUser();
-		String password = admin.getPassword();
 		Integer permission = admin.getPermission();
 
-		String sql = "UPDATE `administrator` SET `password` = ?,`permission` = ? ,`user` = ?WHERE (`id` = ?)";
+		String sql = "UPDATE `administrator` SET `permission` = ? ,`user` = ?WHERE (`id` = ?)";
 
 		Connection con = MySQLConnectionUtils.mySQLConnection();
 		PreparedStatement ps = con.prepareStatement(sql);
 
-		ps.setString(1, password);
-		ps.setInt(2, permission);
-		ps.setString(3, user);
-		ps.setInt(4, id);
+		ps.setInt(1, permission);
+		ps.setString(2, user);
+		ps.setInt(3, id);
 
 		ps.execute();
 		

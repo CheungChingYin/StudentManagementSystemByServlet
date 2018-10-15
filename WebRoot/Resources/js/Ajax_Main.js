@@ -8,7 +8,7 @@ $(function() {
 		var address = $(this).attr("href");
 		$("a").removeClass("active")
 		$(this).addClass("active");
-		$('#contain').nextAll().remove();
+		$('#contain').html("");
 		$('#contain').load(address);
 		switch (type) {
 		case 'StudentManagement':

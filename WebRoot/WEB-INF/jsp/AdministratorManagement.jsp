@@ -38,7 +38,7 @@
 	</div>
 	<!-- 管理员列表 -->
 	<div class="content" id='content'>
-		<table class="table table-striped" id="table-content">
+		<table class="table table-striped table-hover" id="table-content">
 			<thead>
 				<tr>
 					<th>编号ID</th>
@@ -52,12 +52,13 @@
 					<td>{{admin.id}}</td>
 					<td>{{admin.user}}</td>
 					<td>{{admin.permission==0?'普通管理员':'超级管理员'}}</td>
-					<td><button class='btn btn-primary admin-alert' v-bind:value="admin.id" data-toggle='modal' data-target='#admin-update' id='admin-update-button'>修改</button>
+					<td><button class='btn btn-primary admin-alert' v-bind:value="admin.id" data-toggle='modal' data-target='#admin-update' id='admin-update-button'>修改权限</button>
+					<button type="button" id='admin-alertPassword-button' class="btn btn-secondary admin-alertPassword-button">修改密码</button>
 					<button id='admin-delete-button' class='btn btn-danger admin-delete' v-bind:value="admin.id">删除</button></td>
 				</tr>
 			</tbody>
 		</table>
-		<div class="admin-total" id="admin-total"></div>
+		<div class="admin-total" id="admin-total">共有{{allAdminCount}}条信息</div>
 		<!-- 分页功能 -->
 		<div class="pageNav">
 			<ul class="pagination">
@@ -90,10 +91,10 @@
 					<form action="" id="admin-add-form" method="post">
 						<div>
 							<label for="admin-name">管理员姓名:</label><input type="text"
-								name="name" id="admin-name">
+								name="user" id="admin-name">
 						</div>
 						<div>
-							<label for="admin-password">管理员密码:</label><input type="text"
+							<label for="admin-password">管理员密码:</label><input type="password"
 								name="password" id="admin-password">
 						</div>
 						<div>
@@ -136,11 +137,7 @@
 						</div>
 						<div>
 							<label for="admin-name">管理员姓名:</label><input type="text"
-								name="name" id="admin-name">
-						</div>
-						<div>
-							<label for="admin-password">管理员密码:</label><input type="text"
-								name="password" id="admin-password">
+								name="user" id="admin-name" readonly="readonly">
 						</div>
 						<div>
 							<label for="admin-sex">管理员权限:</label> <select
