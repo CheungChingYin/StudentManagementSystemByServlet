@@ -6,23 +6,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet("/AdministratorManagement")
-public class AdministratorManagementUIServlet extends HttpServlet {
+@WebServlet("/MajorManagement")
+public class MajorManagementUIServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		HttpSession session = request.getSession();
-		if (session.getAttribute("admin") == null) {
-			response.sendRedirect(request.getContextPath() + "/Login");
-			return;
-		}
-		Integer permission =(Integer) session.getAttribute("permission");
-		if(permission == 1){
-			request.getRequestDispatcher("/WEB-INF/jsp/AdministratorManagement.jsp").forward(request, response);
-		}
+		request.getRequestDispatcher("/WEB-INF/jsp/MajorManagement.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

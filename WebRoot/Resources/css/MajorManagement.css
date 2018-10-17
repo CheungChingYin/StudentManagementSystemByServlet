@@ -1,0 +1,48 @@
+.major-top {
+	width: 90%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	margin-top: 20px;
+	display: flex;
+}
+
+.major-title {
+	flex: 2;
+}
+
+.major-search {
+	flex: 1;
+}
+
+.major-alert{
+	margin-right: 10px;
+}
+
+.major-total {
+	width: 90%;
+	margin: 0 auto;
+	text-align: right;
+	font-family: "微软雅黑";
+	font-size: 20px;
+}
+
+.pageNav {
+	margin-left: 380px;
+}
+
+.modal-body div{
+	margin-left:20%;
+	margin-top: 10px;
+}
+
+.modal-body div label {
+	display:inline-block;
+	width:100px;
+	margin-left:100px;
+}
+.major-alertPassword-button{
+	margin-right: 10px;
+}

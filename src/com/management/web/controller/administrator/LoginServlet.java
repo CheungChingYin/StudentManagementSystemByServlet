@@ -30,11 +30,12 @@ public class LoginServlet extends HttpServlet {
 		response.setHeader("Content-type","text/html;charset=UTF-8");
 
 		boolean loginResult = service.login(user, password);
+		Integer permission = service.searchAdministratorByName(user).getPermission();
 		if (loginResult) {
 			if (request.getParameter("remeberMe") != null && request.getParameter("remeberMe").equals("on")) {
 				//检查是否勾选了记住我，需要先检查获取是否为空，不然会报空指针异常
 				session.setAttribute("admin", user);
-				session.setAttribute("permission",service.searchAdministratorByName(user).getPermission());
+				session.setAttribute("permission",permission);
 				session.setMaxInactiveInterval(7 * 24 * 3600);// Session保存7天
 				Cookie cookie = new Cookie("JSESSIONID", session.getId());
 				cookie.setMaxAge(7 * 24 * 3600);// cookie的有效期也为7天
@@ -43,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 				response.getWriter().write("<script language='JavaScript'>alert('登录成功');window.location.href='"+request.getContextPath()+"/Home'</script>");
 			} else {
 				session.setAttribute("admin", user);
-				session.setAttribute("permission",service.searchAdministratorByName(user).getPermission());
+				session.setAttribute("permission",permission);
 				response.getWriter().write("<script language='JavaScript'>alert('登录成功');window.location.href='"+request.getContextPath()+"/Home'</script>");
 			}
 		} else {
