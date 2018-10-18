@@ -62,8 +62,8 @@ var vmMajorContent = new Vue({
 					vmMajorContent.nextPage = data.nextPage;
 					vmMajorContent.pageNum = data.pageNum;
 					vmMajorContent.allMajorCount = data.allMajorCount;
-					vmAdminContent.search = data.search;
-					vmAdminContent.flag = false;
+					vmMajorContent.search = data.search;
+					vmMajorContent.flag = false;
 				})
 			})
 		}

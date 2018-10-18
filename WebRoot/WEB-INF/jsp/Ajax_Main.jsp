@@ -52,7 +52,7 @@
 					value="StudentManagement">学生管理</a></li>
 				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/AdministratorManagement">管理员管理</a></li>
 				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/MajorManagement">专业管理</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">学院管理</a></li>
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/CollegeManagement">学院管理</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">退出登录</a></li>
 			</ul>
 		</div>

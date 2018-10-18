@@ -1,4 +1,4 @@
-package com.management.web.controller.major;
+package com.management.web.controller.college;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,55 +14,53 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.management.entities.Major;
-import com.management.service.MajorService;
-import com.management.service.impl.MajorServiceImpl;
+import com.management.entities.College;
+import com.management.service.CollegeService;
+import com.management.service.impl.CollegeServiceImpl;
 import com.management.utils.PageUtils;
 
-@WebServlet("/SearchMajor")
-public class SearchMajor extends HttpServlet {
+@WebServlet("/searchCollege")
+public class SearchCollege extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		request.setCharacterEncoding("UTF-8");
 		Integer page = Integer.parseInt(request.getParameter("page"));
 		String search = request.getParameter("search");
-		if(search== null || page == null){
+		if(page == null || search == null){
 			return;
 		}
-		
-		MajorService service = new MajorServiceImpl();
+		CollegeService service = new CollegeServiceImpl();
 		Map<String, Object> map = new HashMap<String, Object>();
-		Major major = null;
-		List<Major> majorList = new LinkedList<Major>();
+		College college = null;
+		List<College> collegeList = new LinkedList<College>();
 		Integer listCount = null;
 		if(search.matches("\\d+")){
-			major = service.searchMajorById(Integer.parseInt(search));
-			majorList.add(major);
-			listCount = majorList.size();
+			college = service.searchCollegeById(Integer.parseInt(search));
+			collegeList.add(college);
 		}else{
-			major = service.searchMajorByName(search);
-			majorList.add(major);
-			listCount = majorList.size();
+			college = service.searchCollegeByName(search);
+			collegeList.add(college);
 		}
+		listCount = collegeList.size();
 		Integer pages = PageUtils.pagesHandler(listCount);
 		if(page == pages){
-			majorList = majorList.subList((page - 1) * 10, listCount);
+			collegeList = collegeList.subList((page - 1) * 10, listCount);
 		}else{
-			majorList = majorList.subList((page - 1) * 10, page * 10);
+			collegeList = collegeList.subList((page - 1) * 10, page * 10);
 		}
 		
 		Integer prePage = PageUtils.prePageHandler(page);
 		Integer nextPage = PageUtils.nextPageHandler(page, listCount);
 		List<Integer> pageNum = PageUtils.pageHandler(page, listCount);
 		
-		map.put("majorList", majorList);
+		map.put("collegeList", collegeList);
 		map.put("prePage", prePage);
 		map.put("nextPage", nextPage);
 		map.put("pageNum", pageNum);
 		map.put("page", page);
-		map.put("allMajorCount", listCount);
+		map.put("allCollegeCount", listCount);
 		map.put("search", search);
 		
 		response.setHeader("Content-Type", "application/json");
@@ -74,6 +72,7 @@ public class SearchMajor extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -1,0 +1,48 @@
+.college-top {
+	width: 90%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	margin-top: 20px;
+	display: flex;
+}
+
+.college-title {
+	flex: 2;
+}
+
+.college-search {
+	flex: 1;
+}
+
+.college-alert{
+	margin-right: 10px;
+}
+
+.college-total {
+	width: 90%;
+	margin: 0 auto;
+	text-align: right;
+	font-family: "微软雅黑";
+	font-size: 20px;
+}
+
+.pageNav {
+	margin-left: 380px;
+}
+
+.modal-body div{
+	margin-left:20%;
+	margin-top: 10px;
+}
+
+.modal-body div label {
+	display:inline-block;
+	width:100px;
+	margin-left:100px;
+}
+.college-alertPassword-button{
+	margin-right: 10px;
+}
