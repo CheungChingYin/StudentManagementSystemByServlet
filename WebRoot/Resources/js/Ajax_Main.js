@@ -3,17 +3,26 @@
  * 让main根据地址刷新相对应的内容
  */
 $(function() {
+	if($("#permission").val()!=1){
+		$("#adminManagement").remove();
+	}
 	$(".nav li a").click(function() {
 		var type = $(this).attr("value");
 		var address = $(this).attr("href");
 		$("a").removeClass("active")
 		$(this).addClass("active");
 		$('#contain').html("");
-		$('#contain').load(address);
+		if(type != "logout"){
+			$('#contain').load(address);
+		}
 		switch (type) {
 		case 'StudentManagement':
 			requestStudentContent("StudentManagementContent?page=1");
 			break;
+		case 'logout':
+			if(confirm("确定退出吗")){
+				window.location.replace(address);
+			}
 		}
 		return false;
 	});

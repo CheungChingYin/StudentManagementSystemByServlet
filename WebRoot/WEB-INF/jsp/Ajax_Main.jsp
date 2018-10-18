@@ -43,6 +43,8 @@
 		<h2>您好！${sessionScope.admin}管理员，欢迎使用学生学籍管理系统</h2>
 		<input type="hidden" value="${pageContext.request.contextPath }"
 			id="path">
+		<input type="hidden" value=${sessionScope.permission}
+			id="permission">
 	</div>
 	<div class="bottom">
 		<div class="index">
@@ -50,10 +52,10 @@
 				<li class="nav-item"><a class="nav-link active"
 					href="${pageContext.request.contextPath }/StudentManagement"
 					value="StudentManagement">学生管理</a></li>
-				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/AdministratorManagement">管理员管理</a></li>
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/AdministratorManagement" id="adminManagement">管理员管理</a></li>
 				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/MajorManagement">专业管理</a></li>
 				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/CollegeManagement">学院管理</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">退出登录</a></li>
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/AdministratorLogOut" value="logout">退出登录</a></li>
 			</ul>
 		</div>
 		<div class="contain" id="contain"></div>
