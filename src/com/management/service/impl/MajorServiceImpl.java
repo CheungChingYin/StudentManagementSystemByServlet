@@ -84,14 +84,10 @@ public class MajorServiceImpl implements MajorService {
 	public void alertMajor(Major major) {
 
 		try {
-			if (dao.existMajor(major.getName())) {
-				major.getErrors().put("name", "专业已存在！");
-				throw new MajorExistException();
-			}
 			if(CheckDataValidity.checkMajorValidate(major)){
 				dao.alertMajor(major);
 			}
-		} catch (SQLException | MajorExistException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
