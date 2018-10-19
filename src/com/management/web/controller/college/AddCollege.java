@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.management.entities.College;
 import com.management.service.CollegeService;
@@ -18,6 +19,11 @@ public class AddCollege extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		HttpSession session = request.getSession();
+		if (session.getAttribute("admin") == null) {
+			response.sendRedirect(request.getContextPath() + "/Login");
+			return;
+		}
 		CollegeService service = new CollegeServiceImpl();
 		College college = WebUtils.request2Bean(request, College.class);
 		service.RegistCollege(college);
