@@ -19,6 +19,14 @@ import com.management.service.MajorService;
 import com.management.service.impl.MajorServiceImpl;
 import com.management.utils.PageUtils;
 
+/**
+ * 展示全部专业
+ *  需要传入参数:
+ * 		request:
+ * 			page(当前页)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/MajorManagementContent")
 public class MajorManagementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -41,6 +49,7 @@ public class MajorManagementServlet extends HttpServlet {
 		if(request.getParameter("page") == null){
 			return;
 		}
+		//分页功能
 		Integer page = Integer.parseInt(request.getParameter("page")); 
 		Integer prePage = PageUtils.prePageHandler(page);
 		Integer nextPage = PageUtils.nextPageHandler(page, listCount);

@@ -16,6 +16,13 @@ import com.google.gson.Gson;
 import com.management.service.AdministratorService;
 import com.management.service.impl.AdministratorServiceImpl;
 
+/**
+ * 检测管理员的名字是否存在（管理员名字不可重复）
+ * 配合前端的nice-validator插件remote()方法进行表单验证
+ * 需要传入参数：user（管理员姓名）
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/AdministratorNameIsExist")
 public class AdministratorIsExist extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,7 +30,7 @@ public class AdministratorIsExist extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		HttpSession session = request.getSession();
-		if (session.getAttribute("admin") == null) {
+		if (session.getAttribute("admin") == null) {//判断是否有管理员登录，如没有则表示为非法登录，则调回登录页面
 			response.sendRedirect(request.getContextPath() + "/Login");
 			return;
 		}
@@ -45,7 +52,7 @@ public class AdministratorIsExist extends HttpServlet {
 		response.setHeader("Content-Type", "application/json");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
-		out.print(res);
+		out.print(res);//把结果通过JSON形式来输出
 		
 	}
 

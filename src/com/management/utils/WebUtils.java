@@ -12,8 +12,19 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.Converter;
 
+/**
+ * 网页工具
+ * @author CheungChingYin
+ *
+ */
 public class WebUtils {
 
+	/**
+	 * request内容装载到实体类中
+	 * @param request
+	 * @param beanClass
+	 * @return
+	 */
 	public static <T> T request2Bean(HttpServletRequest request, Class<T> beanClass) {
 		// 创建要封装数据的bean
 		try {
@@ -30,6 +41,11 @@ public class WebUtils {
 		}
 	}
 
+	/**
+	 * 复制Bean
+	 * @param src
+	 * @param dest
+	 */
 	public static void copyBean(Object src, Object dest) {
 		ConvertUtils.register(new Converter() {
 

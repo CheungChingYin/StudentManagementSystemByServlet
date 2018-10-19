@@ -20,6 +20,15 @@ import com.management.service.CollegeService;
 import com.management.service.impl.CollegeServiceImpl;
 import com.management.utils.PageUtils;
 
+/**
+ * 学院搜索功能
+ * 需要传入参数:
+ * 	request:
+ * 		page(当前页)
+ * 		search(搜索内容)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/searchCollege")
 public class SearchCollege extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -42,13 +51,14 @@ public class SearchCollege extends HttpServlet {
 		College college = null;
 		List<College> collegeList = new LinkedList<College>();
 		Integer listCount = null;
-		if(search.matches("\\d+")){
+		if(search.matches("\\d+")){//判断搜索内容为纯数字，则按学院ID来搜索
 			college = service.searchCollegeById(Integer.parseInt(search));
 			collegeList.add(college);
-		}else{
+		}else{//其他则按照学院名称来搜索
 			college = service.searchCollegeByName(search);
 			collegeList.add(college);
 		}
+		//分页功能
 		listCount = collegeList.size();
 		Integer pages = PageUtils.pagesHandler(listCount);
 		if(page == pages){

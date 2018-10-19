@@ -14,6 +14,9 @@ import com.management.utils.MySQLConnectionUtils;
 
 public class CollegeDaoImpl implements CollegeDao {
 
+	/**
+	 * 查询所有学院信息
+	 */
 	@Override
 	public List<College> queryAllCollege() throws SQLException {
 
@@ -31,6 +34,9 @@ public class CollegeDaoImpl implements CollegeDao {
 		return list;
 	}
 
+	/**
+	 * 通过学院ID查询学院信息
+	 */
 	@Override
 	public College queryCollegeById(Integer id) throws SQLException {
 
@@ -46,6 +52,9 @@ public class CollegeDaoImpl implements CollegeDao {
 		return college;
 	}
 
+	/**
+	 * 通过学院名字查询学院信息
+	 */
 	@Override
 	public College queryCollegeByName(String name) throws SQLException {
 
@@ -60,6 +69,9 @@ public class CollegeDaoImpl implements CollegeDao {
 		return college;
 	}
 
+	/**
+	 * 添加学院信息
+	 */
 	@Override
 	public void addCollege(College college) throws SQLException {
 
@@ -80,6 +92,9 @@ public class CollegeDaoImpl implements CollegeDao {
 
 	}
 
+	/**
+	 * 修改学院信息
+	 */
 	@Override
 	public void alertCollege(College college) throws SQLException {
 
@@ -100,6 +115,9 @@ public class CollegeDaoImpl implements CollegeDao {
 
 	}
 
+	/**
+	 * 删除学院信息
+	 */
 	@Override
 	public void deleteCollege(Integer id) throws SQLException {
 
@@ -113,6 +131,9 @@ public class CollegeDaoImpl implements CollegeDao {
 
 	}
 
+	/**
+	 * 判断学院名字是否存在
+	 */
 	@Override
 	public boolean existCollege(String collegeName) throws SQLException {
 

@@ -14,6 +14,9 @@ public class MajorServiceImpl implements MajorService {
 
 	MajorDao dao = new MajorDaoImpl();
 
+	/**
+	 * 查询所有专业信息
+	 */
 	@Override
 	public List<Major> searchAllMajor() {
 
@@ -27,6 +30,9 @@ public class MajorServiceImpl implements MajorService {
 		return list;
 	}
 
+	/**
+	 * 通过学院ID查询相对应的专业
+	 */
 	@Override
 	public List<Major> searchMajorByCollegeId(Integer id) {
 
@@ -39,6 +45,9 @@ public class MajorServiceImpl implements MajorService {
 		return list;
 	}
 
+	/**
+	 * 通过专业ID查询专业信息
+	 */
 	@Override
 	public Major searchMajorById(Integer id) {
 		Major major = null;
@@ -50,6 +59,9 @@ public class MajorServiceImpl implements MajorService {
 		return major;
 	}
 
+	/**
+	 * 通过专业名称查询专业信息
+	 */
 	@Override
 	public Major searchMajorByName(String name) {
 		Major major = null;
@@ -61,6 +73,9 @@ public class MajorServiceImpl implements MajorService {
 		return major;
 	}
 
+	/**
+	 * 新增专业信息
+	 */
 	@Override
 	public void registMajor(Major major) {
 
@@ -80,6 +95,9 @@ public class MajorServiceImpl implements MajorService {
 
 	}
 
+	/**
+	 * 修改专业信息
+	 */
 	@Override
 	public void alertMajor(Major major) {
 
@@ -92,7 +110,10 @@ public class MajorServiceImpl implements MajorService {
 		}
 		
 	}
-
+	
+	/**
+	 * 删除专业信息
+	 */
 	@Override
 	public void deleteMajor(Integer id) {
 		try {

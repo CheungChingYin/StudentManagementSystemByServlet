@@ -11,7 +11,7 @@ var vmAdminContent = new Vue({
 		search:"",
 		flag:true
 	},
-	mounted : function() {
+	mounted : function() {//初始化时执行内容
 		var self = this;
 		$.get("AdministratorManagementContent?page=1", function(data, status) {
 			self.adminList = data.adminList;
@@ -25,7 +25,7 @@ var vmAdminContent = new Vue({
 		});
 	},
 	methods : {
-		pageChange : function(page) {
+		pageChange : function(page) {//点击分页时间
 			this.$nextTick(function() {
 				$.get("AdministratorManagementContent?page=" + page, function(data, status) {
 					console.log(data.adminList)
@@ -40,7 +40,7 @@ var vmAdminContent = new Vue({
 				});
 			});
 		},
-		searchFunction:function(){
+		searchFunction:function(){//搜索分页时间
 			this.$nextTick(function(){
 				$.get("searchAdministraotr?page=1&search="+$(".admin-search-bar").val(),function(data,status){
 					console.log(data.adminList);
@@ -55,7 +55,7 @@ var vmAdminContent = new Vue({
 				})
 			})
 		},
-		searchPage:function(page,search){
+		searchPage:function(page,search){//点击搜索分页时间
 			this.$nextTick(function(){
 				$.get("searchAdministraotr?page="+page+"&search="+search,function(data,status){
 					vmAdminContent.adminList = data.adminList;
@@ -73,7 +73,7 @@ var vmAdminContent = new Vue({
 });
 
 /*
- * 添加功能表单校验
+ * 添加管理员功能表单校验
  */
 $("#admin-add-form").validator({
 	rules : {
@@ -105,7 +105,7 @@ $("#admin-add-form").validator({
 });
 
 /*
- * 修改权限表单校验
+ * 修改管理员权限表单校验
  */
 $("#admin-update-form").validator({
 	rules : {

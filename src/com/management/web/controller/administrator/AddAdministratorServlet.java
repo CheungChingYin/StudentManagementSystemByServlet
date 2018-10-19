@@ -13,6 +13,13 @@ import com.management.service.AdministratorService;
 import com.management.service.impl.AdministratorServiceImpl;
 import com.management.utils.WebUtils;
 
+
+/**
+ * 管理员添加功能
+ * 需要传入：管理员添加表单的参数
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/addAdministrator")
 public class AddAdministratorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -24,7 +31,7 @@ public class AddAdministratorServlet extends HttpServlet {
 			return;
 		}
 		AdministratorService service = new AdministratorServiceImpl();
-		Administrator admin = WebUtils.request2Bean(request, Administrator.class);
+		Administrator admin = WebUtils.request2Bean(request, Administrator.class);//获取request域里面的参数，并且把相对应的参数放入admin中
 		if(admin == null){
 			return;
 		}

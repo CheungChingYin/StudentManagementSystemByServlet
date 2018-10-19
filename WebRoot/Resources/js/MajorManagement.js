@@ -11,7 +11,7 @@ var vmMajorContent = new Vue({
 		search:"",
 		flag:true
 	},
-	mounted : function() {
+	mounted : function() {//初始化页面执行方法
 		var self = this;
 		$.get("MajorManagementContent?page=1", function(data, status) {
 			self.majorList = data.majorList;
@@ -71,7 +71,7 @@ var vmMajorContent = new Vue({
 });
 
 /*
- * 添加功能表单校验
+ * 添加专业功能表单校验
  */
 $("#major-add-form").validator({
 	rules : {
@@ -83,7 +83,7 @@ $("#major-add-form").validator({
 		'college_id' : "required"
 	},
 	/**
-	 * 新增管理员表单的提交按钮点击事件
+	 * 新增专业表单的提交按钮点击事件
 	 * 提交表单
 	 */
 	valid : $("#major-add-input").click(function() {
@@ -102,7 +102,7 @@ $("#major-add-form").validator({
 });
 
 /*
- * 修改权限表单校验
+ * 修改专业表单校验
  */
 $("#major-update-form").validator({
 	rules : {
@@ -115,7 +115,7 @@ $("#major-update-form").validator({
 	},
 
 	/**
-	 * 表单验证通过后管理员权限更新提交按钮
+	 * 表单验证通过后专业更新提交按钮
 	 * 提交表单
 	 */
 	valid : $("#major-update-input").click(function() {
@@ -136,7 +136,7 @@ $("#major-update-form").validator({
 
 
 /**
- * 点击添加管理员按钮事件
+ * 点击添加专业按钮事件
  * 清空表单内容
  */
 $("#major-add-button").click(function(){
@@ -185,7 +185,7 @@ $("#table-content").on("click", "#major-update-button", function() {
 
 
 /**
- * 管理员删除按钮点击事件
+ * 专业删除按钮点击事件
  * 删除相对应的管理员
  */
 $("#table-content").on("click", "#major-delete-button",function(){

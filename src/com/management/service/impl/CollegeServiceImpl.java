@@ -15,6 +15,7 @@ public class CollegeServiceImpl implements CollegeService {
 	private CollegeDao dao = new CollegeDaoImpl();
 
 	/*
+	 * 搜索全部学院
 	 * (non-Javadoc)
 	 * 
 	 * @see com.management.service.CollegeService#searchAllCollege()
@@ -32,6 +33,7 @@ public class CollegeServiceImpl implements CollegeService {
 	}
 
 	/*
+	 * 通过ID搜索学院
 	 * (non-Javadoc)
 	 * 
 	 * @see com.management.service.CollegeService#searchCollegeById(java.lang.
@@ -52,6 +54,7 @@ public class CollegeServiceImpl implements CollegeService {
 	}
 
 	/*
+	 * 通过名字搜索学院
 	 * (non-Javadoc)
 	 * 
 	 * @see com.management.service.CollegeService#searchCollegeByName(java.lang.
@@ -70,6 +73,7 @@ public class CollegeServiceImpl implements CollegeService {
 	}
 
 	/*
+	 * 新增学院信息
 	 * (non-Javadoc)
 	 * 
 	 * @see com.management.service.CollegeService#RegistCollege(com.management.
@@ -94,6 +98,7 @@ public class CollegeServiceImpl implements CollegeService {
 	}
 
 	/*
+	 * 修改学院信息
 	 * (non-Javadoc)
 	 * 
 	 * @see com.management.service.CollegeService#AlertCollege(com.management.
@@ -116,6 +121,7 @@ public class CollegeServiceImpl implements CollegeService {
 	}
 
 	/*
+	 * 删除学院信息
 	 * (non-Javadoc)
 	 * 
 	 * @see

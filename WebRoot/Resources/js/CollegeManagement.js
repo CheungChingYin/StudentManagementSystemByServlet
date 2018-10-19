@@ -11,7 +11,7 @@ var vmCollegeContent = new Vue({
 		search:"",
 		flag:true
 	},
-	mounted : function() {
+	mounted : function() {//初始话执行方法
 		var self = this;
 		$.get("CollegeManagementContent?page=1", function(data, status) {
 			self.collegeList = data.collegeList;
@@ -71,7 +71,7 @@ var vmCollegeContent = new Vue({
 });
 
 /*
- * 添加功能表单校验
+ * 添加学院功能表单校验
  */
 $("#college-add-form").validator({
 	rules : {
@@ -82,7 +82,7 @@ $("#college-add-form").validator({
 		'name' : "required;nameValidate"
 	},
 	/**
-	 * 新增管理员表单的提交按钮点击事件
+	 * 新增学院表单的提交按钮点击事件
 	 * 提交表单
 	 */
 	valid : $("#college-add-input").click(function() {
@@ -101,7 +101,7 @@ $("#college-add-form").validator({
 });
 
 /*
- * 修改权限表单校验
+ * 修改学院表单校验
  */
 $("#college-update-form").validator({
 	rules : {
@@ -158,8 +158,8 @@ $("#table-content").on("click", "#college-update-button", function() {
 
 
 /**
- * 管理员删除按钮点击事件
- * 删除相对应的管理员
+ * 学院删除按钮点击事件
+ * 删除相对应的学院
  */
 $("#table-content").on("click", "#college-delete-button",function(){
 	var id = $(this).val();

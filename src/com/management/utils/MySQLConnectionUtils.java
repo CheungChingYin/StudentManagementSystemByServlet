@@ -15,6 +15,11 @@ import javax.sql.rowset.CachedRowSet;
 
 import com.sun.rowset.CachedRowSetImpl;
 
+/**
+ * 数据库连接工具
+ * @author CheungChingYin
+ *
+ */
 public class MySQLConnectionUtils {
 
 	// 用于连接数据库的工具类

@@ -1,5 +1,10 @@
 package com.management.utils;
 
+/**
+ * 相关常量
+ * @author CheungChingYin
+ *
+ */
 public interface ConstantUtils {
 
 	public static class Page {

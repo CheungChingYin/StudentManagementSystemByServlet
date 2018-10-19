@@ -17,6 +17,15 @@ import com.management.entities.Major;
 import com.management.service.MajorService;
 import com.management.service.impl.MajorServiceImpl;
 
+/**
+ * 判断专业ID是否存在
+ * 配合前端的nice-validator插件remote()方法进行表单验证
+ *  需要传入参数:
+ * 		request:
+ * 			id(专业ID)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/majorIdIsExist")
 public class MajorIdIsExist extends HttpServlet {
 	private static final long serialVersionUID = 1L;

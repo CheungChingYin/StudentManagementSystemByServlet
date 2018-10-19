@@ -20,6 +20,15 @@ import com.management.service.AdministratorService;
 import com.management.service.impl.AdministratorServiceImpl;
 import com.management.utils.PageUtils;
 
+/**
+ * 管理员搜索功能
+ * 需要传入参数
+ * 	request:
+ * 		page(当前页码)
+ * 		search(搜索内容)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/searchAdministraotr")
 public class SearchAdministraotr extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -37,16 +46,16 @@ public class SearchAdministraotr extends HttpServlet {
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<Administrator> administratorList = new LinkedList<Administrator>();
 		Integer listCount = null;
-		if(search.matches("\\d+")){
+		if(search.matches("\\d+")){//如果搜索内容全为数字，则判断为按管理员ID进行搜索
 			admin = service.searchAdministratorById(Integer.parseInt(search));
 			administratorList.add(admin);
 			listCount = administratorList.size();
-		}else{
+		}else{//按姓名搜索
 			admin = service.searchAdministratorByName(search);
 			administratorList.add(admin);
 			listCount = administratorList.size();
 		}
-		Integer pages = PageUtils.pagesHandler(listCount);
+		Integer pages = PageUtils.pagesHandler(listCount);//分页功能
 		if(page == pages){
 			administratorList = administratorList.subList((page - 1) * 10, listCount);
 		}else{

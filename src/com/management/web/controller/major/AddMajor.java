@@ -13,6 +13,17 @@ import com.management.service.MajorService;
 import com.management.service.impl.MajorServiceImpl;
 import com.management.utils.WebUtils;
 
+/**
+ * 专业添加功能
+ * 需要传入参数:
+ * 		request:
+ * 			专业添加表单
+ * 				id(专业ID)
+ * 				name(专业名称)
+ * 				college_id(专业所属学院ID)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/AddMajor")
 public class AddMajor extends HttpServlet {
 	private static final long serialVersionUID = 1L;

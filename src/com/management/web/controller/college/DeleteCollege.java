@@ -11,6 +11,14 @@ import javax.servlet.http.HttpSession;
 import com.management.service.CollegeService;
 import com.management.service.impl.CollegeServiceImpl;
 
+/**
+ * 删除学院功能
+ * 需要传入参数:
+ * 	request:
+ * 		id(学院ID)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/deleteCollege")
 public class DeleteCollege extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,7 +36,7 @@ public class DeleteCollege extends HttpServlet {
 			return;
 		}
 		CollegeService service = new CollegeServiceImpl();
-		service.deleteCollege(Integer.parseInt(id));
+		service.deleteCollege(Integer.parseInt(id));//执行删除功能
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

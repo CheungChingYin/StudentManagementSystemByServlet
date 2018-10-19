@@ -5,8 +5,18 @@ import java.security.NoSuchAlgorithmException;
 
 import org.apache.commons.codec.binary.Base64;
 
+/**
+ * 密码加密
+ * @author CheungChingYin
+ *
+ */
 public class PasswordEncryptionUtils {
 
+	/**
+	 * 通过MD5进行密码加密
+	 * @param password
+	 * @return
+	 */
 	public static String plainText2MD5Encrypt(String password){
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");

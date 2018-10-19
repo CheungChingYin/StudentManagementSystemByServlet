@@ -16,6 +16,14 @@ import com.management.entities.Major;
 import com.management.service.MajorService;
 import com.management.service.impl.MajorServiceImpl;
 
+/**
+ * 根据学院获得相对应的专业
+ * 需要传入参数:
+ * 		request:
+ * 			collegeId(学院ID)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/getMajor")
 public class GetMajorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

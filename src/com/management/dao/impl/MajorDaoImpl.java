@@ -14,6 +14,9 @@ import com.management.utils.MySQLConnectionUtils;
 
 public class MajorDaoImpl implements MajorDao {
 
+	/**
+	 * 查询所有专业信息
+	 */
 	@Override
 	public List<Major> queryAllMajor() throws SQLException {
 
@@ -32,6 +35,9 @@ public class MajorDaoImpl implements MajorDao {
 		return list;
 	}
 
+	/**
+	 * 通过专业ID查询专业信息
+	 */
 	@Override
 	public Major queryMajorById(Integer id) throws SQLException {
 
@@ -48,6 +54,9 @@ public class MajorDaoImpl implements MajorDao {
 		return major;
 	}
 
+	/**
+	 * 通过学院ID查询相关的专业信息
+	 */
 	@Override
 	public List<Major> queryMajorByCollege(Integer id) throws SQLException {
 
@@ -66,6 +75,9 @@ public class MajorDaoImpl implements MajorDao {
 		return list;
 	}
 
+	/**
+	 * 通过专业名称查询专业信息
+	 */
 	@Override
 	public Major queryMajorByName(String name) throws SQLException {
 
@@ -82,6 +94,9 @@ public class MajorDaoImpl implements MajorDao {
 		return major;
 	}
 
+	/**
+	 * 添加专业
+	 */
 	@Override
 	public void addMajor(Major major) throws SQLException {
 
@@ -102,6 +117,9 @@ public class MajorDaoImpl implements MajorDao {
 		con.close();
 	}
 
+	/**
+	 * 修改专业
+	 */
 	@Override
 	public void alertMajor(Major major) throws SQLException {
 
@@ -124,6 +142,9 @@ public class MajorDaoImpl implements MajorDao {
 
 	}
 
+	/**
+	 * 删除专业
+	 */
 	@Override
 	public void deleteMajor(Integer id) throws SQLException {
 
@@ -136,6 +157,9 @@ public class MajorDaoImpl implements MajorDao {
 		con.close();
 	}
 
+	/**
+	 * 查询专业名字是否存在
+	 */
 	@Override
 	public boolean existMajor(String majorName) throws SQLException {
 

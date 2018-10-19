@@ -12,6 +12,17 @@ import com.management.service.AdministratorService;
 import com.management.service.impl.AdministratorServiceImpl;
 import com.management.utils.PasswordEncryptionUtils;
 
+/**
+ * 管理员修改密码
+ * 需要传入参数
+ * 	request:
+ * 		管理员修改表单：
+ * 			id(管理员ID)
+ * 			user(管理员姓名)
+ * 			password(管理员密码)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/updateAdministratorPassword")
 public class UpdateAdministratorPassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,7 +41,7 @@ public class UpdateAdministratorPassword extends HttpServlet {
 		if(id == null || password == null){
 			return;
 		}
-		password = PasswordEncryptionUtils.plainText2MD5Encrypt(password);
+		password = PasswordEncryptionUtils.plainText2MD5Encrypt(password);//加密密码
 		service.updateAdministratorPassword(id, password);
 	}
 

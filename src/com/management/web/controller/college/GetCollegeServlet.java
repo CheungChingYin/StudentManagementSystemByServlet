@@ -16,6 +16,12 @@ import com.management.entities.College;
 import com.management.service.CollegeService;
 import com.management.service.impl.CollegeServiceImpl;
 
+/**
+ * 获得全部的学院信息
+ * 用于制作<select>标签，和学院、专业二级联动
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/getCollege")
 public class GetCollegeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

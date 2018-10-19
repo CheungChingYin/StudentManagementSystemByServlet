@@ -9,8 +9,18 @@ import com.management.entities.College;
 import com.management.entities.Major;
 import com.management.entities.Student;
 
+/**
+ * 提交信息合法性检查
+ * @author CheungChingYin
+ *
+ */
 public class CheckDataValidity {
 
+	/**
+	 * 检查管理员数据合法性
+	 * @param admin
+	 * @return
+	 */
 	public static boolean administratorValidate(Administrator admin) {
 		boolean isOk = true;
 		// 1.用户名不能为空
@@ -42,6 +52,11 @@ public class CheckDataValidity {
 		return isOk;
 	}
 
+	/**
+	 * 检查学生数据合法性
+	 * @param stu
+	 * @return
+	 */
 	public static boolean checkStudentValidate(Student stu) {
 
 		String id = stu.getId();
@@ -112,6 +127,11 @@ public class CheckDataValidity {
 		return isOk;
 	}
 
+	/**
+	 * 检查专业数据合法性
+	 * @param major
+	 * @return
+	 */
 	public static boolean checkMajorValidate(Major major) {
 
 		boolean isOk = true;
@@ -130,6 +150,11 @@ public class CheckDataValidity {
 		return isOk;
 	}
 
+	/**
+	 * 检查学院数据合法性
+	 * @param college
+	 * @return
+	 */
 	public static boolean checkCollegeValidate(College college) {
 
 		boolean isOk = true;

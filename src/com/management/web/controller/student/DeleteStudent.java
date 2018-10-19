@@ -11,6 +11,14 @@ import javax.servlet.http.HttpSession;
 import com.management.service.StudentService;
 import com.management.service.impl.StudentServiceImpl;
 
+/**
+ * 学生删除功能
+ * 需要传入参数
+ * 	reuqest:
+ * 		id(学生学号)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/deleteStudent")
 public class DeleteStudent extends HttpServlet {
 	private static final long serialVersionUID = 1L;

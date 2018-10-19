@@ -11,6 +11,14 @@ import javax.servlet.http.HttpSession;
 import com.management.service.MajorService;
 import com.management.service.impl.MajorServiceImpl;
 
+/**
+ * 专业删除功能
+ * 需要传入参数:
+ * 		request:
+ * 			id(专业ID)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/deleteMajor")
 public class DeleteMajor extends HttpServlet {
 	private static final long serialVersionUID = 1L;

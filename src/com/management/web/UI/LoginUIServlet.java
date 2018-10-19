@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * 跳转到登录页面
+ * @author CheungChingYin
+ *
+ */
 @WebServlet(description = "跳转到登录界面", urlPatterns = { "/Login" })
 public class LoginUIServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

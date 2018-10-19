@@ -13,6 +13,17 @@ import com.management.service.AdministratorService;
 import com.management.service.impl.AdministratorServiceImpl;
 import com.management.utils.WebUtils;
 
+/**
+ * 更新管理员信息
+ * 	需要传入参数：
+ * 		reuqest:
+ * 			管理员修改表单：
+ * 				id(管理员ID)
+ * 				user(管理员姓名)
+ * 				permission(管理员权限)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/updateAdministrator")
 public class UpdateAdministrator extends HttpServlet {
 	private static final long serialVersionUID = 1L;

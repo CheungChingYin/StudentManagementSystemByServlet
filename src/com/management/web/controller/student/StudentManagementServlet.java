@@ -21,6 +21,14 @@ import com.management.service.impl.StudentServiceImpl;
 import com.management.utils.ConstantUtils;
 import com.management.utils.PageUtils;
 
+/**
+ * 展示全部学生的内容
+ * 需要传入参数
+ * 	request:
+ * 		page(当前页)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/StudentManagementContent")
 public class StudentManagementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

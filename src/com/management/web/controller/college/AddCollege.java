@@ -13,6 +13,15 @@ import com.management.service.CollegeService;
 import com.management.service.impl.CollegeServiceImpl;
 import com.management.utils.WebUtils;
 
+/**
+ * 学院添加功能
+ * 需要传入参数：
+ * 	学院添加表单：
+ * 		id(学院ID)
+ * 		name(学院名称)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/addCollege")
 public class AddCollege extends HttpServlet {
 	private static final long serialVersionUID = 1L;

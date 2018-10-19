@@ -13,6 +13,17 @@ import com.management.service.MajorService;
 import com.management.service.impl.MajorServiceImpl;
 import com.management.utils.WebUtils;
 
+/**
+ * 更新专业功能
+ *  需要传入参数:
+ * 		request:
+ * 			更新专业表单：
+ * 				id(专业ID)
+ * 				name(专业名称)
+ * 				college_id(专业相关的学院id)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/updateMajor")
 public class UpdateMajor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -31,7 +42,6 @@ public class UpdateMajor extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

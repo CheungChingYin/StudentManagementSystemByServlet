@@ -13,6 +13,16 @@ import com.management.service.CollegeService;
 import com.management.service.impl.CollegeServiceImpl;
 import com.management.utils.WebUtils;
 
+/**
+ * 学院更新功能
+ * 	需要传入参数:
+ * 		request:
+ * 			学院更新表单:
+ * 				id(学院ID)
+ * 				name(学院名称)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/updateCollege")
 public class UpdateCollege extends HttpServlet {
 	private static final long serialVersionUID = 1L;

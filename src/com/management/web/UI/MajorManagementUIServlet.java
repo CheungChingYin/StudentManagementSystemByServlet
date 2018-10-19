@@ -8,6 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * 跳转到专业管理页面
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/MajorManagement")
 public class MajorManagementUIServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

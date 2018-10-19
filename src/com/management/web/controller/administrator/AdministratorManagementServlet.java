@@ -20,6 +20,14 @@ import com.management.service.AdministratorService;
 import com.management.service.impl.AdministratorServiceImpl;
 import com.management.utils.PageUtils;
 
+/**
+ * 全部管理员信息获取
+ * 需要传入参数：
+ * 	request：
+ * 		page(当前页码)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/AdministratorManagementContent")
 public class AdministratorManagementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,17 +43,18 @@ public class AdministratorManagementServlet extends HttpServlet {
 		AdministratorService service = new AdministratorServiceImpl();
 		
 		// 处理页码
-		Integer listCount = service.countAllAdministrator();
+		Integer listCount = service.countAllAdministrator();//获取管理员总数
 		if(request.getParameter("page") == null){
 			return;
 		}
-		Integer page = Integer.parseUnsignedInt(request.getParameter("page"));
-		Integer prePage = PageUtils.prePageHandler(page);
-		Integer nextPage = PageUtils.nextPageHandler(page, listCount);
-		Integer pages = PageUtils.pagesHandler(listCount);
-		List<Integer> pageNum = PageUtils.pageHandler(page, listCount);
+		Integer page = Integer.parseUnsignedInt(request.getParameter("page"));//获得传来的当前页
+		Integer prePage = PageUtils.prePageHandler(page);//计算出上一页页码
+		Integer nextPage = PageUtils.nextPageHandler(page, listCount);//计算出下一页页码
+		Integer pages = PageUtils.pagesHandler(listCount);//计算出总共分为多少页
+		List<Integer> pageNum = PageUtils.pageHandler(page, listCount);//使用列表装载将要表示的页数
 		List<Administrator> list = null;
 		
+		//判断当前页是否等于尾页，进行伪分页
 		if(page == pages){
 			list = service.getAllAdministrator().subList((page - 1) * 10, listCount);
 		}else{

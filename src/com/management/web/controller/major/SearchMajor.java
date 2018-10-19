@@ -20,6 +20,15 @@ import com.management.service.MajorService;
 import com.management.service.impl.MajorServiceImpl;
 import com.management.utils.PageUtils;
 
+/**
+ * 专业搜索功能
+ *  需要传入参数:
+ * 		request:
+ * 			page(当前页面)
+ * 			search(搜索内容)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/SearchMajor")
 public class SearchMajor extends HttpServlet {
 	private static final long serialVersionUID = 1L;

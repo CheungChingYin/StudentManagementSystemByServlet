@@ -11,6 +11,14 @@ import javax.servlet.http.HttpSession;
 import com.management.service.AdministratorService;
 import com.management.service.impl.AdministratorServiceImpl;
 
+/**
+ * 管理员删除功能
+ * 需要传入参数：
+ * 	request:
+ * 		id(管理员ID)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/deleteAdministrator")
 public class DeleteAdministrator extends HttpServlet {
 	private static final long serialVersionUID = 1L;

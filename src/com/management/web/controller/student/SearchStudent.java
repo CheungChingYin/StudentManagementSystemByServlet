@@ -21,6 +21,15 @@ import com.management.service.StudentService;
 import com.management.service.impl.StudentServiceImpl;
 import com.management.utils.PageUtils;
 
+/**
+ * 学生搜索功能
+ * 需要传入参数
+ * 	request:
+ * 		page(当前页)
+ * 		search(搜索内容)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/SearchStudent")
 public class SearchStudent extends HttpServlet {
 	private static final long serialVersionUID = 1L;

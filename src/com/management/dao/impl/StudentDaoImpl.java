@@ -15,6 +15,9 @@ import com.management.utils.MySQLConnectionUtils;
 
 public class StudentDaoImpl implements StudentDao {
 
+	/**
+	 * 查询所有学生信息
+	 */
 	@Override
 	public List<Student> queryAllStudents() throws SQLException {
 
@@ -47,6 +50,9 @@ public class StudentDaoImpl implements StudentDao {
 		return list;
 	}
 
+	/**
+	 * 通过学生学号查询学生信息
+	 */
 	@Override
 	public Student queryStudentById(String id) throws SQLException {
 
@@ -65,6 +71,9 @@ public class StudentDaoImpl implements StudentDao {
 		return stu;
 	}
 	
+	/**
+	 * 通过学生名字查询学生信息
+	 */
 	@Override
 	public List<Student> queryStudentByName(String name) throws SQLException {
 		
@@ -85,6 +94,9 @@ public class StudentDaoImpl implements StudentDao {
 		return list;
 	}
 
+	/**
+	 * 增加学生信息
+	 */
 	@Override
 	public void addStudent(Student student) throws SQLException {
 
@@ -116,6 +128,9 @@ public class StudentDaoImpl implements StudentDao {
 
 	}
 
+	/**
+	 * 修改学生信息
+	 */
 	@Override
 	public void alertStudent(Student student) throws SQLException {
 
@@ -145,6 +160,9 @@ public class StudentDaoImpl implements StudentDao {
 		con.close();
 	}
 
+	/**
+	 * 删除学生信息
+	 */
 	@Override
 	public void deleteStudent(String id) throws SQLException {
 
@@ -157,6 +175,9 @@ public class StudentDaoImpl implements StudentDao {
 		con.close();
 	}
 
+	/**
+	 * 查询学生id是否存在
+	 */
 	@Override
 	public boolean studentIsExist(String id) throws SQLException {
 

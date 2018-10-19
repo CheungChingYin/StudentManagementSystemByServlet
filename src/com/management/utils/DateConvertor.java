@@ -4,6 +4,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * 日期转换工具
+ * @author CheungChingYin
+ *
+ */
 public class DateConvertor {
 
 	public static java.sql.Date stringDate2SqlDate(String utilDate) {

@@ -15,6 +15,9 @@ import com.management.utils.MySQLConnectionUtils;
 
 public class AdministratorDaoImpl implements AdministratorDao {
 
+	/**
+	 * 查询管理员姓名是否存在
+	 */
 	@Override
 	public boolean existAdministrator(Administrator admin) throws AdministratorExistException, SQLException {
 
@@ -24,6 +27,9 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		return result.next();
 	}
 
+	/**
+	 * 管理员登录查询
+	 */
 	@Override
 	public boolean loginAdministrator(String userName, String password) throws SQLException {
 
@@ -32,6 +38,9 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		return result.next();
 	}
 
+	/**
+	 * 添加管理信息
+	 */
 	@Override
 	public void addAdministrator(Administrator admin) throws SQLException {
 
@@ -55,6 +64,9 @@ public class AdministratorDaoImpl implements AdministratorDao {
 
 	}
 
+	/**
+	 * 查询所有管理员信息
+	 */
 	@Override
 	public List<Administrator> queryAllAdministrator() throws SQLException {
 
@@ -71,6 +83,9 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		return list;
 	}
 
+	/**
+	 * 通过管理员ID查询管理员信息
+	 */
 	@Override
 	public Administrator queryAdministratorById(Integer id) throws SQLException {
 
@@ -85,6 +100,9 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		return admin;
 	}
 
+	/**
+	 * 修改管理员信息
+	 */
 	@Override
 	public void alertAdministrator(Administrator admin) throws SQLException {
 
@@ -108,6 +126,9 @@ public class AdministratorDaoImpl implements AdministratorDao {
 
 	}
 
+	/**
+	 * 删除管理员信息
+	 */
 	@Override
 	public void deleteAdministrator(Integer id) throws SQLException {
 
@@ -122,6 +143,9 @@ public class AdministratorDaoImpl implements AdministratorDao {
 
 	}
 
+	/**
+	 * 通过管理员名字查询管理员信息
+	 */
 	@Override
 	public Administrator queryAdministratorByName(String name) throws SQLException {
 		String sql = "SELECT * FROM administrator WHERE user='" + name + "'";
@@ -135,6 +159,9 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		return admin;
 	}
 
+	/**
+	 * 修改管理员密码
+	 */
 	@Override
 	public void alertAdministratorPassword(Integer id, String password) throws SQLException {
 

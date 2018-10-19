@@ -19,6 +19,14 @@ import com.management.service.CollegeService;
 import com.management.service.impl.CollegeServiceImpl;
 import com.management.utils.PageUtils;
 
+/**
+ * 获取并通过JSON返回全部学院信息
+ * 需要传入参数:
+ * 	request:
+ * 		page(当前页码)
+ * @author CheungChingYin
+ *
+ */
 @WebServlet("/CollegeManagementContent")
 public class CollegeManagementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -37,6 +45,7 @@ public class CollegeManagementServlet extends HttpServlet {
 		List<College> collegeList = service.searchAllCollege();
 		Integer listCount = collegeList.size();
 		
+		//分页功能
 		Integer page = Integer.parseInt(request.getParameter("page")); 
 		Integer prePage = PageUtils.prePageHandler(page);
 		Integer nextPage = PageUtils.nextPageHandler(page, listCount);

@@ -14,6 +14,9 @@ public class StudentServiceImpl implements StudentService {
 
 	private StudentDao dao = new StudentDaoImpl();
 
+	/**
+	 * 添加学生信息
+	 */
 	@Override
 	public void addStudent(Student student) {
 
@@ -31,6 +34,9 @@ public class StudentServiceImpl implements StudentService {
 
 	}
 
+	/**
+	 * 修改学生信息
+	 */
 	@Override
 	public void alertStudent(Student student) {
 
@@ -49,6 +55,9 @@ public class StudentServiceImpl implements StudentService {
 		}
 	}
 
+	/**
+	 * 删除学生信息
+	 */
 	@Override
 	public void deleteStudent(String id) {
 
@@ -59,6 +68,10 @@ public class StudentServiceImpl implements StudentService {
 		}
 	}
 
+	
+	/**
+	 * 查询全部学生信息
+	 */
 	@Override
 	public List<Student> queryAllStudent() {
 
@@ -71,6 +84,9 @@ public class StudentServiceImpl implements StudentService {
 		return list;
 	}
 
+	/**
+	 * 通过学生学号查询学生信息
+	 */
 	@Override
 	public Student searchStudentById(String id) {
 
