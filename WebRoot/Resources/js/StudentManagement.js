@@ -5,7 +5,8 @@
 $("#stu-add-button").on("click", function() {
 	$.get("getCollege", function(data, status) {
 		var college = data;
-		var res = "";
+		$("#college").html("");
+		var res ="<option value=''>---请选择---</option>";
 		for (var i = 0; i < college.length; i++) {
 			res += "<option value='" + college[i].id + "'>" + college[i].name + "</option>";
 		}
