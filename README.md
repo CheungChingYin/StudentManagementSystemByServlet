@@ -2,7 +2,7 @@
 这一个项目是学生管理系统的Servlet版，后端采用`Servlet`，前端使用`Vue`、`BootStrap`等框架，数据库使用MySQL实现。
 项目中的个别实现过程可以查看我的博客的文章[《基于Servlet的学生管理系统》](https://blog.csdn.net/qq_33596978/article/details/83188529)进行查看。
 
-我把此项目部署到了我的服务器中，各位同学可以在线体验一下这个项目：[点我体验](http://139.199.66.197/StudentManagementSystemByServlet/Login)
+我把此项目部署到了我的服务器中，各位同学可以在线体验一下这个项目：[点我体验](http://139.199.66.197:8080/StudentManagementSystemByServlet/Login)
 
 由于超级管理员能够删除其他管理员账号，故这里只能给出普通管理员账号供大家使用，超级管理员和普通管理员的差别是普通管理员少了一个管理员管理模块。
 - 用户名：李白
