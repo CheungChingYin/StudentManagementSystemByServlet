@@ -62,9 +62,15 @@ public class MySQLConnectionUtils {
 			e.printStackTrace();
 		}finally {
 			try {
-				rs.close();
-				statement.close();
-				connection.close();
+                if (rs != null) {
+                    rs.close();
+                }
+				if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
