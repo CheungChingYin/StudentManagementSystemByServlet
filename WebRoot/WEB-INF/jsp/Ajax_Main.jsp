@@ -24,7 +24,7 @@
 	src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
 <!-- 引入Vue -->
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
 
 <!-- 导入前端数据校验插件 -->
 <script
