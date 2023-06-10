@@ -71,7 +71,7 @@
 					<a class='page-link' id='page' @click="pageChange(pages)" href="#" v-if="flag">{{pages}}</a>
 					<a class='page-link' id='page' @click="searchPage(pages,search)" href="#" v-else>{{pages}}</a>
 				</li>
-				
+
 				<li class='page-item'><a class='page-link' id='page' href="#" @click="pageChange(nextPage)" v-if="flag == true">下一页</a></li>
 				<li class='page-item'><a class='page-link' id='page' href="#" @click="searchPage(nextPage,search)" v-if="flag == false">下一页</a></li>
 			</ul>
@@ -101,7 +101,7 @@
 								name="name" id="major-name">
 						</div>
 						<div>
-							<label for="major-college">所属专业:</label> <select
+							<label for="major-college">所属学院:</label> <select
 								id="major-college" name="college_id">
 								<option value="">---请选择---</option>
 							</select>
@@ -141,7 +141,7 @@
 								name="name" id="major-name">
 						</div>
 						<div>
-							<label for="major-college">所属专业:</label> <select
+							<label for="major-college">所属学院:</label> <select
 								id="major-college" name="college_id">
 								<option value="">---请选择---</option>
 							</select>
@@ -158,7 +158,7 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 </body>
 </html>

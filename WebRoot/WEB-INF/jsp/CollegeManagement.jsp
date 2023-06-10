@@ -69,7 +69,7 @@
 					<a class='page-link' id='page' @click="pageChange(pages)" href="#" v-if="flag">{{pages}}</a>
 					<a class='page-link' id='page' @click="searchPage(pages,search)" href="#" v-else>{{pages}}</a>
 				</li>
-				
+
 				<li class='page-item'><a class='page-link' id='page' href="#" @click="pageChange(nextPage)" v-if="flag == true">下一页</a></li>
 				<li class='page-item'><a class='page-link' id='page' href="#" @click="searchPage(nextPage,search)" v-if="flag == false">下一页</a></li>
 			</ul>
@@ -95,7 +95,7 @@
 								name="id" id="college-id">
 						</div>
 						<div>
-							<label for="college-password">专业名称:</label><input type="text"
+							<label for="college-password">学院名称:</label><input type="text"
 								name="name" id="college-name">
 						</div>
 					</form>
@@ -144,7 +144,7 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 </body>
 </html>

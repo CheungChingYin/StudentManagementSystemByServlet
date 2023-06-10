@@ -33,7 +33,7 @@
 				<button class="btn btn-primary stu-addStudent" data-toggle="modal"
 					data-target="#stu-add" id="stu-add-button">添加学生学籍</button>
 			</div>
-	
+
 		</div>
 	</div>
 	<!-- 学生列表 -->
@@ -105,7 +105,7 @@
 								name="major_id"><option selected="selected" value="">---请选择---</option></select>
 						</div>
 						<div>
-							<label for="college">所属专业:</label><select id="college"
+							<label for="college">所属学院:</label><select id="college"
 								name="college_id"><option selected="selected" value="">---请选择---</option></select>
 						</div>
 					</form>
@@ -120,7 +120,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- 学生修改模态框 -->
 	<div class="modal fade" id="stu-update">
 		<div class="modal-dialog modal-lg">
@@ -164,7 +164,7 @@
 								name="major_id"></select>
 						</div>
 						<div>
-							<label for="college">所属专业:</label><select id="college"
+							<label for="college">所属学院:</label><select id="college"
 								name="college_id"></select>
 						</div>
 					</form>
